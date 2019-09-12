@@ -20,13 +20,13 @@ static int isFloat(char* stringValue);
 
 /** \brief Verifica si la cadena recibida contiene solo letras.
  * 
- * \param value Array con la cadena de caracteres a ser analizada.
+ * \param value char Caracter a ser analizado.
  * \return int
- *      [0] si contiene solo letras
- *      [-1] si contiene otro tipo de caracteres.
+ *      [0] Si es una letra de acuerdo al estandar ASCII
+ *      [-1] Si es otro tipo de caracter ASCII.
  *
  */
-static int isOnlyLetters(char value[]);
+static int isLetter(char value);
 
 void input_clearBuffer()
 {
@@ -167,9 +167,7 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
 
     if(input != NULL && message != NULL && eMessage != NULL
         && (int)hiLimit >= (int)lowLimit
-        /**< Se valida que los caracteres minimos y maximos cumplan con la especificacion ASCII */
-        && (((int)lowLimit >= 65 && (int)lowLimit <= 90) || ((int)lowLimit >= 97 && (int)lowLimit <= 122))
-        && (((int)hiLimit >= 65 && (int)hiLimit <= 90) || ((int)hiLimit >= 97 && (int)hiLimit <= 122)))
+        && !isLetter(lowLimit) && !isLetter(hiLimit))
     {
         do
         {
@@ -310,23 +308,15 @@ static int isFloat(char* stringValue)
     return returnValue;
 }
 
-static int isOnlyLetters(char value[])
+static int isLetter(char value)
 {
    int returnValue = -1;
-   int i=0;
-
-   while(value[i] != '\0')
-   {
-       if((value[i] != ' ')
-        && (value[i] < 'a' || value[i] > 'z')
-        && (value[i] < 'A' || value[i] > 'Z'))
-        {
-            returnValue = 0;
-            break;
-        }
-
-       i++;
-   }
+   
+    if(((int)value >= (int)'a' && (int)value <= (int)'z')
+        || ((int)value >= (int)'A' && (int)value <= (int)'Z'))
+    {
+        returnValue = 0;
+    }
 
    return returnValue;
 }
