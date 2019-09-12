@@ -30,6 +30,28 @@ void input_clearBuffer()
     }
 }
 
+void input_clearScreen()
+{
+    #if defined (__unix__) || defined (__APPLE__) || defined (__MACH__)
+    {
+        system("clear");
+    }
+    #else
+    {
+        system("cls");
+    }
+    #endif
+}
+
+void input_pauseScreen(char message[])
+{
+    printf("%s...", message);
+    /**< Metodo para parar la ejecucion del programa
+    hasta presionar Enter para diferentes SO */
+    setbuf(stdin, NULL);
+    getchar();
+}
+
 int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {
     int returnValue = -1;

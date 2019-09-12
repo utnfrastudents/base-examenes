@@ -18,6 +18,23 @@
  */
 void input_clearBuffer(void);
 
+/** \brief Funcion que limpia la pantalla de la consola en los diferentes SO
+ *
+ * \param void No requiere paramteros
+ * \return void No retorna valores
+ *
+ */
+void input_clearScreen(void);
+
+/** \brief Funcion que interrumpe la ejecucion del programa
+ *      hasta que se presiona la tecla Enter
+ *
+ * \param message[] char Es el mensaje a ser mostrado
+ * \return void No retorna valores
+ *
+ */
+void input_pauseScreen(char message[]);
+
 /** \brief Solicita un numero al usuario y lo valida
  *
  * \param input* int Se carga el numero ingresado
