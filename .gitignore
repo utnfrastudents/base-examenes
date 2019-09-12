@@ -29,3 +29,4 @@ $RECYCLE.BIN/
 *.o
 *.a
 *.layout
+bin/Debug/*
