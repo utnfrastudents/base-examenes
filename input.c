@@ -177,6 +177,21 @@ int input_getNumberType(float number)
     return returnEvaluation;
 }
 
+void input_printNumberByType(char message[], float number)
+{
+    switch (input_getNumberType(number))
+    {
+        case 1:
+            /**< Se imprime en consola el numero como entero */
+            printf("%s %.0lf\n", message, number); 
+            break;
+        case 2:
+            /**< Se imprime en consola el numero como flotante con tres decimales */
+            printf("%s %.3lf\n", message, number);
+            break;
+    }
+}
+
 static int isNumber(char* stringValue)
 {
     int returnValue = -1;

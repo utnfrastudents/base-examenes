@@ -70,4 +70,14 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
  */
 int input_getNumberType(float number);
 
+/** \brief Funcion que imprime un numero
+ *      en pantalla segun su tipo
+ *
+ * \param message[] char Mensaje a imprimir antes del numero
+ * \param number float Numero con o sin decimales a imprimir
+ * \return void No retorna valores
+ *
+ */
+void input_printNumberByType(char message[], float number);
+
 #endif // INPUT_H_INCLUDED
