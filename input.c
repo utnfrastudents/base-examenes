@@ -18,6 +18,16 @@ static int isNumber(char* stringValue);
  */
 static int isFloat(char* stringValue);
 
+/** \brief Verifica si la cadena recibida contiene solo letras.
+ * 
+ * \param value Array con la cadena de caracteres a ser analizada.
+ * \return int
+ *      [0] si contiene solo letras
+ *      [-1] si contiene otro tipo de caracteres.
+ *
+ */
+static int isOnlyLetters(char value[]);
+
 void input_clearBuffer()
 {
     char memoryBuffer = '\n';
@@ -149,6 +159,48 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
     return returnValue;
 }
 
+int input_getChar(char* input, char message[], char eMessage[], char lowLimit, char hiLimit)
+{
+    int returnValue = -1;
+    int counter = 0;
+    char charValue;
+
+    if(input != NULL && message != NULL && eMessage != NULL
+        && (int)hiLimit >= (int)lowLimit
+        /**< Se valida que los caracteres minimos y maximos cumplan con la especificacion ASCII */
+        && (((int)lowLimit >= 65 && (int)lowLimit <= 90) || ((int)lowLimit >= 97 && (int)lowLimit <= 122))
+        && (((int)hiLimit >= 65 && (int)hiLimit <= 90) || ((int)hiLimit >= 97 && (int)hiLimit <= 122)))
+    {
+        do
+        {
+            counter++;
+
+            if(counter == 1)
+            {
+                printf("%s: ", message);
+            }
+            else
+            {
+                if(counter > 1)
+                {
+                    printf("%s: ", eMessage);
+                }
+            }
+
+            scanf("%c", &charValue);
+            input_clearBuffer();
+        } while((int)charValue < (int)lowLimit || (int)charValue > (int)hiLimit);
+
+        if((int)charValue >= (int)lowLimit && (int)charValue <= (int)hiLimit)
+        {
+            *input = charValue;
+            returnValue = 0;
+        }
+    }
+
+    return returnValue;
+}
+
 int input_getNumberType(float number)
 {
     int returnEvaluation; /**< Se almacena el tipo numerico */
@@ -256,4 +308,25 @@ static int isFloat(char* stringValue)
     }
 
     return returnValue;
+}
+
+static int isOnlyLetters(char value[])
+{
+   int returnValue = -1;
+   int i=0;
+
+   while(value[i] != '\0')
+   {
+       if((value[i] != ' ')
+        && (value[i] < 'a' || value[i] > 'z')
+        && (value[i] < 'A' || value[i] > 'Z'))
+        {
+            returnValue = 0;
+            break;
+        }
+
+       i++;
+   }
+
+   return returnValue;
 }
