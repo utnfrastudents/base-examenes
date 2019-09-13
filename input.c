@@ -3,20 +3,20 @@
 /** \brief Funcion que evalua si una cadena ingresada por teclado
  *  es un numero decimal.
  *
- * \param stringValue char* Direccion de la cadena a evaluar
+ * \param stringValue[] char Direccion de la cadena a evaluar.
  * \return int Si es un numero decimal retorna [0] si no [-1]
  *
  */
-static int isNumber(char* stringValue);
+static int isNumber(char stringValue[]);
 
 /** \brief Funcion que evalua si una cadena ingresada por teclado
  *  es un numero flontante.
  *
- * \param stringValue char* Direccion de la cadena a evaluar
+ * \param stringValue[] char Direccion de la cadena a evaluar.
  * \return int Si es un numero flotante retorna [0] si no [-1]
  *
  */
-static int isFloat(char* stringValue);
+static int isFloat(char stringValue[]);
 
 void input_clearBuffer()
 {
@@ -283,7 +283,7 @@ void input_printNumberByType(char message[], float number)
     }
 }
 
-static int isNumber(char* stringValue)
+static int isNumber(char stringValue[])
 {
     int returnValue = -1;
     char charAux;
@@ -312,7 +312,7 @@ static int isNumber(char* stringValue)
     return returnValue;
 }
 
-static int isFloat(char* stringValue)
+static int isFloat(char stringValue[])
 {
     int returnValue = -1;
     int pointerCounter = 0;

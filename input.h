@@ -9,8 +9,8 @@
 #include <ctype.h>
 
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
-#define STRING_AS_NUMBER_MAX 64 /**< Buffer de entrada maximo para cadenas numericas. >*/
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de cadena de caracteres. >*/
+#define STRING_AS_NUMBER_MAX 64 /**< Buffer de entrada maximo para cadenas numericas. >*/
 #define STRING_MAX 255 /**< Se define la maxima cantidad de caracteres. >*/
 
 /** \brief Funcion que limpia el buffer de entrada
