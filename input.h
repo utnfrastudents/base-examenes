@@ -6,6 +6,7 @@
 #include <string.h>
 #include <float.h>
 #include <math.h>
+#include <ctype.h>
 
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
 #define STRING_AS_NUMBER_MAX 64 /**< Buffer de entrada maximo para cadenas numericas. >*/

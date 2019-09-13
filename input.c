@@ -18,16 +18,6 @@ static int isNumber(char* stringValue);
  */
 static int isFloat(char* stringValue);
 
-/** \brief Verifica si la cadena recibida contiene solo letras.
- * 
- * \param value char Caracter a ser analizado.
- * \return int
- *      [0] Si es una letra de acuerdo al estandar ASCII
- *      [-1] Si es otro tipo de caracter ASCII.
- *
- */
-static int isLetter(char value);
-
 void input_clearBuffer()
 {
     /**< Mientras que en el buffer no exista un Enter
@@ -167,7 +157,7 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
 
     if(input != NULL && message != NULL && eMessage != NULL
         && (int)hiLimit >= (int)lowLimit
-        && !isLetter(lowLimit) && !isLetter(hiLimit))
+        && isalpha(lowLimit) && isalpha(hiLimit))
     {
         do
         {
@@ -357,17 +347,4 @@ static int isFloat(char* stringValue)
     }
 
     return returnValue;
-}
-
-static int isLetter(char value)
-{
-   int returnValue = -1;
-   
-    if(((int)value >= (int)'a' && (int)value <= (int)'z')
-        || ((int)value >= (int)'A' && (int)value <= (int)'Z'))
-    {
-        returnValue = 0;
-    }
-
-   return returnValue;
 }
