@@ -3,4 +3,5 @@
 .gitignore              export-ignore
 .gitattributes          export-ignore
 .vscode/                export-ignore
+LICENSE                 export-ignore
 .                       linguist-vendored
