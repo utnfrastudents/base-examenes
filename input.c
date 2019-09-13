@@ -30,11 +30,9 @@ static int isLetter(char value);
 
 void input_clearBuffer()
 {
-    char memoryBuffer = '\n';
-
     /**< Mientras que en el buffer no exista un Enter
     la funcion getchar toma sus valores */
-    while (getchar() != memoryBuffer)
+    while (getchar() != ENTER_CHARACTER)
     {
         /**< No requiere implementacion */
     }
@@ -56,9 +54,11 @@ void input_clearScreen()
 void input_pauseScreen(char message[])
 {
     printf("%s...", message);
+    
     /**< Metodo para parar la ejecucion del programa
     hasta presionar Enter para diferentes SO */
     setbuf(stdin, NULL);
+
     getchar();
 }
 
@@ -192,6 +192,57 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
         if((int)charValue >= (int)lowLimit && (int)charValue <= (int)hiLimit)
         {
             *input = charValue;
+            returnValue = 0;
+        }
+    }
+
+    return returnValue;
+}
+
+int input_getString(char* input, char message[], char eMessage[], int lowLimit, int hiLimit)
+{
+    int returnValue = -1;
+    int counter = 0;
+    int sizeScan = 0;
+    char auxMessage[STRING_MAX];
+
+    if(input != NULL && message != NULL && eMessage != NULL
+        && hiLimit >= lowLimit && hiLimit <= STRING_MAX && lowLimit > 0)
+    {
+        do
+        {
+            counter++;
+
+            if(counter == 1)
+            {
+                printf("%s", message);
+            }
+            else
+            {
+                if(counter > 1)
+                {
+                    printf("%s", eMessage);
+                }
+            }
+
+            if(scanf("%[^\n]s", auxMessage))
+            {
+                sizeScan = strlen(auxMessage);
+            }
+            else
+            {
+                continue;
+            }
+
+            input_clearBuffer();
+
+            printf("\n*** [debug] String size: %d\n", sizeScan);
+        } while(sizeScan < lowLimit || sizeScan > hiLimit);
+
+        if(sizeScan >= lowLimit && sizeScan <= hiLimit
+            && sizeScan > 0 && hiLimit <= STRING_MAX)
+        {
+            strcpy(input, auxMessage);
             returnValue = 0;
         }
     }
