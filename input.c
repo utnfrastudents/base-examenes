@@ -18,7 +18,7 @@ static int isNumber(char stringValue[]);
  */
 static int isFloat(char stringValue[]);
 
-void input_clearBuffer()
+void input_clearBufferAfter()
 {
     /**< Mientras que en el buffer no exista un Enter
     la funcion getchar toma sus valores */
@@ -45,12 +45,10 @@ void input_clearScreen()
 void input_pauseScreen(char message[])
 {
     printf("%s...", message);
-    
-    /**< Metodo para parar la ejecucion del programa
-    hasta presionar Enter para diferentes SO */
-    setbuf(stdin, NULL);
 
-    getchar();
+    setbuf(stdin, NULL); /**< Limpieza de buffer previo */
+
+    getchar(); /**< Metodo para pausar la ejecucion del programa */
 }
 
 int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
@@ -178,7 +176,7 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
             }
 
             scanf("%c", &charValue);
-            input_clearBuffer();
+            input_clearBufferAfter();
         } while((int)charValue < (int)lowLimit || (int)charValue > (int)hiLimit);
 
         if((int)charValue >= (int)lowLimit && (int)charValue <= (int)hiLimit)
@@ -228,7 +226,7 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
                 continue;
             }
 
-            input_clearBuffer();
+            input_clearBufferAfter();
         } while(sizeScan < lowLimit || sizeScan > hiLimit);
 
         if(sizeScan >= lowLimit && sizeScan <= hiLimit

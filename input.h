@@ -13,13 +13,13 @@
 #define STRING_AS_NUMBER_MAX 64 /**< Buffer de entrada maximo para cadenas numericas. >*/
 #define STRING_MAX 255 /**< Se define la maxima cantidad de caracteres. >*/
 
-/** \brief Funcion que limpia el buffer de entrada
+/** \brief Funcion que limpia el buffer de entrada a posterior del ingreso por teclado
  *
  * \param void No requiere parametros
  * \return void No retorna valores
  *
  */
-void input_clearBuffer(void);
+void input_clearBufferAfter(void);
 
 /** \brief Funcion que limpia la pantalla de la consola en los diferentes SO
  *
