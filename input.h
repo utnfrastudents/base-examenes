@@ -7,6 +7,7 @@
 #include <float.h>
 #include <math.h>
 #include <ctype.h>
+#include <limits.h>
 
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de cadena de caracteres. >*/
@@ -51,7 +52,7 @@ void input_pauseScreen(char message[]);
 int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit);
 
 /** \brief Solicita un numero flotante al usuario y lo valida
- * 
+ *
  * \param input* float Se carga el numero flotante ingresado
  * \param message[] char Es el mensaje a ser mostrado
  * \param eMessage[] char Es el mensaje a ser mostrado en caso de error
@@ -64,7 +65,7 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
 
 
 /** \brief Solicita un caracter al usuario y lo valida
- * 
+ *
  * \param input char* Se carga el caracter ingresado
  * \param message[] char Es el mensaje a ser mostrado
  * \param eMessage[] char Es el mensaje a ser mostrado en caso de error
@@ -76,7 +77,7 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
 int input_getChar(char* input, char message[], char eMessage[], char lowLimit, char hiLimit);
 
 /** \brief Solicita una cadena de caracteres al usuario y la valida.
- * 
+ *
  * \param input char* Se carga el string ingresado
  * \param message[] char Es el mensaje a ser mostrado
  * \param eMessage[] char Es el mensaje a ser mostrado en caso de error
@@ -88,7 +89,7 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
 int input_getString(char* input, char message[], char eMessage[], int lowLimit, int hiLimit);
 
 /** \brief Solicita un numero flotante al usuario e indica su tipo
- * 
+ *
  * \param number float Numero con o sin decimales a evaluar
  * \return int
  *      Si devuelve [0] no puede reconocer el tipo

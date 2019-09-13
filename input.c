@@ -60,7 +60,7 @@ int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int 
 
     char stringNumber[STRING_AS_NUMBER_MAX]; /**< Variable para almacenar la cadena ingresada por teclado. >*/
 
-    if(hiLimit >= lowLimit && lowLimit >= INT32_MIN && hiLimit <= INT32_MAX
+    if(hiLimit >= lowLimit && lowLimit >= INT_MIN && hiLimit <= INT_MAX
         && input != NULL && message != NULL && eMessage != NULL)
     {
         do
@@ -104,7 +104,7 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
     int returnValue = -1; /**< Variable de retorno. >*/
     int counter = 0; /**< Variable contador de ciclos de solicitudes al usuario. >*/
     int numberIndicator = -1; /**< Variable para almacenar si la cadena ingresada es flotante. >*/
-    
+
     float convertedNumber; /**< Variable para almacenar la cadena convertida a numero. >*/
 
     char stringNumber[STRING_AS_NUMBER_MAX]; /**< Variable para almacenar la cadena ingresada por teclado. >*/
@@ -272,7 +272,7 @@ void input_printNumberByType(char message[], float number)
     {
         case 1:
             /**< Se imprime en consola el numero como entero */
-            printf("%s %.0lf\n", message, number); 
+            printf("%s %.0lf\n", message, number);
             break;
         case 2:
             /**< Se imprime en consola el numero como flotante con tres decimales */
