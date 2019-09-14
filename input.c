@@ -198,7 +198,7 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     char auxMessage[STRING_MAX]; /**< Variable para almacenar la cadena ingresada por teclado. >*/
 
     if(input != NULL && message != NULL && eMessage != NULL
-        && hiLimit >= lowLimit && hiLimit <= STRING_MAX && lowLimit > 0)
+        && hiLimit >= lowLimit && hiLimit < STRING_MAX && lowLimit > 0)
     {
         do
         {
@@ -230,8 +230,11 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
         } while(sizeScan < lowLimit || sizeScan > hiLimit);
 
         if(sizeScan >= lowLimit && sizeScan <= hiLimit
-            && sizeScan > 0 && hiLimit <= STRING_MAX)
+            && sizeScan > 0 && hiLimit < STRING_MAX)
         {
+            /**< Se controla el uso de memoria agregando el caracter terminador */
+            auxMessage[STRING_MAX] = EXIT_BUFFER;
+            
             strcpy(input, auxMessage);
             returnValue = 0;
         }
