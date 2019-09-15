@@ -233,8 +233,8 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
             && sizeScan > 0 && hiLimit < STRING_MAX)
         {
             /**< Se controla el uso de memoria agregando el caracter terminador */
-            auxMessage[STRING_MAX] = EXIT_BUFFER;
-            
+            auxMessage[STRING_MAX-1] = EXIT_BUFFER;
+
             strcpy(input, auxMessage);
             returnValue = 0;
         }
