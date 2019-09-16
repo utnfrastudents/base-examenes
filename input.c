@@ -44,7 +44,7 @@ void input_clearScreen()
 
 void input_pauseScreen(char message[])
 {
-    printf("%s...", message);
+    printf("%s", message);
 
     setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
 
@@ -201,8 +201,8 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
                 }
             }
 
+            setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
             scanf("%c", &charValue);
-            input_clearBufferAfter();
         } while((int)charValue < (int)lowLimit || (int)charValue > (int)hiLimit);
 
         if((int)charValue >= (int)lowLimit && (int)charValue <= (int)hiLimit)
@@ -242,8 +242,8 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
                 }
             }
 
-            /**< Metodo para escanear la cadena completa por mas que existan espacios */
-            if(scanf("%[^\n]s", auxMessage))
+            setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
+            if(scanf("%[^\n]s", auxMessage)) /**< Metodo para escanear la cadena completa con espacios */
             {
                 sizeScan = strlen(auxMessage);
             }
@@ -251,8 +251,6 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
             {
                 continue;
             }
-
-            input_clearBufferAfter();
         } while(sizeScan < lowLimit || sizeScan > hiLimit);
 
         if(sizeScan >= lowLimit && sizeScan <= hiLimit
@@ -262,7 +260,7 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
             auxMessage[STRING_MAX-1] = EXIT_BUFFER;
 
             strcpy(input, auxMessage);
-            
+
             returnValue = 0;
         }
     }
@@ -270,25 +268,61 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     return returnValue;
 }
 
-int input_concatStrings(char* concatenatedString, char firstString[], char secondString[], int maxLenght)
+int input_concatStrings(char firstString[], char secondString[], int maxLenght)
 {
     int returnValue = -1;
-    char auxString[STRING_MAX] = "";
 
-    if(concatenatedString != NULL && firstString != NULL && secondString != NULL
-        && (strlen(firstString) + strlen(secondString)) < maxLenght && maxLenght < STRING_MAX)
+    if(firstString != NULL && secondString != NULL
+        && (strlen(firstString) + strlen(secondString)) < maxLenght
+        && maxLenght < STRING_MAX && maxLenght > 0)
     {
-        strncat(auxString, firstString, maxLenght);
-        strncat(auxString, secondString, maxLenght);
-        strncpy(concatenatedString, auxString, maxLenght);
+        strncat(firstString, secondString, maxLenght);
 
         /**< Se controla el uso de memoria agregando el caracter terminador. */
-        concatenatedString[maxLenght] = EXIT_BUFFER;
-        
+        firstString[maxLenght] = EXIT_BUFFER;
+
         returnValue = 0;
     }
 
     return returnValue;
+}
+
+char* input_stringToUppercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = toupper((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
+}
+
+char* input_stringToLowercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = tolower((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
 }
 
 void input_printNumberByType(char message[], float number)
