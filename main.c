@@ -12,6 +12,8 @@ int main()
         if(!input_concatStrings(firstString, secondString, 100))
         {
             input_pauseScreen(firstString);
+            input_pauseScreen(input_stringToUppercase(firstString, 100));
+            input_pauseScreen(input_stringToLowercase(firstString, 100));
         }
     }
 

@@ -110,6 +110,24 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
  */
 int input_concatStrings(char firstString[], char secondString[], int maxLenght);
 
+/** \brief Devuelve la cadena de caracteres en mayusculas.
+ * 
+ *  \param string[] char Cadena de caracteres a pasar a mayusculas.
+ *  \param maxLength int Longitud maxima a pasar a mayusculas.
+ *  \return char* Puntero a cadena de caracteres pasada a mayusculas.
+ * 
+ */
+char* input_stringToUppercase(char string[], int maxLength);
+
+/** \brief Devuelve la cadena de caracteres en minusculas.
+ * 
+ *  \param string[] char Cadena de caracteres a pasar a minusculas.
+ *  \param maxLength int Longitud maxima a pasar a minusculas.
+ *  \return char* Puntero a cadena de caracteres pasada a minusculas.
+ * 
+ */
+char* input_stringToLowercase(char string[], int maxLength);
+
 /** \brief Funcion que imprime un numero en pantalla segun su tipo.
  *
  * \param message[] char Mensaje a imprimir antes del numero.

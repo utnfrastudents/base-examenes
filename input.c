@@ -260,7 +260,7 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
             auxMessage[STRING_MAX-1] = EXIT_BUFFER;
 
             strcpy(input, auxMessage);
-            
+
             returnValue = 0;
         }
     }
@@ -271,20 +271,58 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
 int input_concatStrings(char firstString[], char secondString[], int maxLenght)
 {
     int returnValue = -1;
-    char auxString[STRING_MAX] = "";
 
     if(firstString != NULL && secondString != NULL
-        && (strlen(firstString) + strlen(secondString)) < maxLenght && maxLenght < STRING_MAX)
+        && (strlen(firstString) + strlen(secondString)) < maxLenght
+        && maxLenght < STRING_MAX && maxLenght > 0)
     {
         strncat(firstString, secondString, maxLenght);
 
         /**< Se controla el uso de memoria agregando el caracter terminador. */
         firstString[maxLenght] = EXIT_BUFFER;
-        
+
         returnValue = 0;
     }
 
     return returnValue;
+}
+
+char* input_stringToUppercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = toupper((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
+}
+
+char* input_stringToLowercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = tolower((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
 }
 
 void input_printNumberByType(char message[], float number)
