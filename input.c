@@ -44,7 +44,7 @@ void input_clearScreen()
 
 void input_pauseScreen(char message[])
 {
-    printf("%s...", message);
+    printf("%s", message);
 
     setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
 
