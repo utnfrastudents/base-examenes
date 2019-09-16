@@ -4,7 +4,7 @@
  *  es un numero decimal.
  *
  * \param stringValue[] char Direccion de la cadena a evaluar.
- * \return int Si es un numero decimal retorna [0] si no [-1]
+ * \return int Si es un numero decimal retorna [0] si no [-1].
  *
  */
 static int isNumber(char stringValue[]);
@@ -13,7 +13,7 @@ static int isNumber(char stringValue[]);
  *  es un numero flontante.
  *
  * \param stringValue[] char Direccion de la cadena a evaluar.
- * \return int Si es un numero flotante retorna [0] si no [-1]
+ * \return int Si es un numero flotante retorna [0] si no [-1].
  *
  */
 static int isFloat(char stringValue[]);
@@ -21,21 +21,21 @@ static int isFloat(char stringValue[]);
 void input_clearBufferAfter()
 {
     /**< Mientras que en el buffer no exista un Enter
-    la funcion getchar toma sus valores */
+    la funcion getchar toma sus valores. */
     while (getchar() != ENTER_CHARACTER)
     {
-        /**< No requiere implementacion */
+        /**< No requiere implementacion. */
     }
 }
 
 void input_clearScreen()
 {
-    /**< Para los sistemas basados en UNIX */
+    /**< Para los sistemas basados en UNIX. */
     #if defined (__unix__) || defined (__APPLE__) || defined (__MACH__)
     {
         system("clear");
     }
-    #else /**< Para los sistemas basados en WINDOWS */
+    #else /**< Para los sistemas basados en WINDOWS. */
     {
         system("cls");
     }
@@ -46,9 +46,35 @@ void input_pauseScreen(char message[])
 {
     printf("%s...", message);
 
-    setbuf(stdin, NULL); /**< Limpieza de buffer previo */
+    setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
 
-    getchar(); /**< Metodo para pausar la ejecucion del programa */
+    getchar(); /**< Metodo para pausar la ejecucion del programa. */
+}
+
+int input_getNumberType(float number)
+{
+    int returnEvaluation; /**< Se almacena el indicador de tipo de numero. >*/
+    float floorNumber; /**< Se almacena la parte entera de un numero. >*/
+
+    floorNumber = floor(number);
+
+    if (number - floorNumber != 0.0f)
+    {
+        returnEvaluation = 2; /**< Indica tipo de dato flotante. */
+    }
+    else
+    {
+        if (number == floorNumber || (float)number == 0)
+        {
+            returnEvaluation = 1; /**< Indica tipo de dato entero. */
+        }
+        else /**< No se puede determinar el tipo de numero. */
+        {
+            returnEvaluation = 0;
+        }
+    }
+
+    return returnEvaluation;
 }
 
 int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
@@ -232,10 +258,11 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
         if(sizeScan >= lowLimit && sizeScan <= hiLimit
             && sizeScan > 0 && hiLimit < STRING_MAX)
         {
-            /**< Se controla el uso de memoria agregando el caracter terminador */
+            /**< Se controla el uso de memoria agregando el caracter terminador. */
             auxMessage[STRING_MAX-1] = EXIT_BUFFER;
 
             strcpy(input, auxMessage);
+            
             returnValue = 0;
         }
     }
@@ -243,30 +270,25 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     return returnValue;
 }
 
-int input_getNumberType(float number)
+int input_concatStrings(char* concatenatedString, char firstString[], char secondString[], int maxLenght)
 {
-    int returnEvaluation; /**< Se almacena el indicador de tipo de numero. >*/
-    float floorNumber; /**< Se almacena la parte entera de un numero. >*/
+    int returnValue = -1;
+    char auxString[STRING_MAX] = "";
 
-    floorNumber = floor(number);
+    if(concatenatedString != NULL && firstString != NULL && secondString != NULL
+        && (strlen(firstString) + strlen(secondString)) < maxLenght && maxLenght < STRING_MAX)
+    {
+        strncat(auxString, firstString, maxLenght);
+        strncat(auxString, secondString, maxLenght);
+        strncpy(concatenatedString, auxString, maxLenght);
 
-    if (number - floorNumber != 0.0f)
-    {
-        returnEvaluation = 2; /**< Indica tipo de dato flotante */
-    }
-    else
-    {
-        if (number == floorNumber || (float)number == 0)
-        {
-            returnEvaluation = 1; /**< Indica tipo de dato entero */
-        }
-        else /**< No se puede determinar el tipo de numero */
-        {
-            returnEvaluation = 0;
-        }
+        /**< Se controla el uso de memoria agregando el caracter terminador. */
+        concatenatedString[maxLenght] = EXIT_BUFFER;
+        
+        returnValue = 0;
     }
 
-    return returnEvaluation;
+    return returnValue;
 }
 
 void input_printNumberByType(char message[], float number)
