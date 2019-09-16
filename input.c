@@ -201,8 +201,8 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
                 }
             }
 
+            setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
             scanf("%c", &charValue);
-            input_clearBufferAfter();
         } while((int)charValue < (int)lowLimit || (int)charValue > (int)hiLimit);
 
         if((int)charValue >= (int)lowLimit && (int)charValue <= (int)hiLimit)
@@ -242,8 +242,8 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
                 }
             }
 
-            /**< Metodo para escanear la cadena completa por mas que existan espacios */
-            if(scanf("%[^\n]s", auxMessage))
+            setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
+            if(scanf("%[^\n]s", auxMessage)) /**< Metodo para escanear la cadena completa con espacios */
             {
                 sizeScan = strlen(auxMessage);
             }
@@ -251,8 +251,6 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
             {
                 continue;
             }
-
-            input_clearBufferAfter();
         } while(sizeScan < lowLimit || sizeScan > hiLimit);
 
         if(sizeScan >= lowLimit && sizeScan <= hiLimit
@@ -270,20 +268,18 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     return returnValue;
 }
 
-int input_concatStrings(char* concatenatedString, char firstString[], char secondString[], int maxLenght)
+int input_concatStrings(char firstString[], char secondString[], int maxLenght)
 {
     int returnValue = -1;
     char auxString[STRING_MAX] = "";
 
-    if(concatenatedString != NULL && firstString != NULL && secondString != NULL
+    if(firstString != NULL && secondString != NULL
         && (strlen(firstString) + strlen(secondString)) < maxLenght && maxLenght < STRING_MAX)
     {
-        strncat(auxString, firstString, maxLenght);
-        strncat(auxString, secondString, maxLenght);
-        strncpy(concatenatedString, auxString, maxLenght);
+        strncat(firstString, secondString, maxLenght);
 
         /**< Se controla el uso de memoria agregando el caracter terminador. */
-        concatenatedString[maxLenght] = EXIT_BUFFER;
+        firstString[maxLenght] = EXIT_BUFFER;
         
         returnValue = 0;
     }

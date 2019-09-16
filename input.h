@@ -102,14 +102,13 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
 /** \brief Valida la concatenacion de dos cadenas
  *      controlando el longitud de la primer cadena por parametro.
  *
- * \param concatenatedString char* Cadena a concatenar las dos cadenas.
- * \param firstString[] char Primer cadena a concatenar.
- * \param secondString[] char Segunda cadena a concatenar.
+ * \param firstString[] char Primer cadena a concatenarse.
+ * \param secondString[] char Segunda cadena a concatenarse.
  * \param maxLenght int Longitud maxima para controlar la concatenacion.
  * \return void Si pudo realizar la concatenacion retorna [0] si no [-1].
  *
  */
-int input_concatStrings(char* concatenatedString, char firstString[], char secondString[], int maxLenght);
+int input_concatStrings(char firstString[], char secondString[], int maxLenght);
 
 /** \brief Funcion que imprime un numero en pantalla segun su tipo.
  *
