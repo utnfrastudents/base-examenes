@@ -268,6 +268,54 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     return returnValue;
 }
 
+int input_getDate(sDate* date, char message[], char eMessage[])
+{
+    int returnValue = -1;
+    int counter = 0;
+    int day;
+    int month;
+    int year;
+
+    if(date != NULL && message != NULL && eMessage != NULL)
+    {
+        do
+        {
+            counter++;
+
+            if(counter == 1)
+            {
+                printf("%s", message);
+            }
+            else
+            {
+                printf("%s", eMessage);
+            }
+
+            setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
+            if(scanf("%d/%d/%d", &day, &month, &year) != 3)
+            {
+                input_clearBufferAfter();
+                continue;
+            }
+        } while ((day < DAY_MIN || day > DAY_MAX)
+            || (month < MONTH_MIN || month > MONTH_MAX)
+            || (year < YEAR_MIN || year > YEAR_MAX));
+
+        if((day >= DAY_MIN && day <= DAY_MAX)
+            && (month >= MONTH_MIN && month <= MONTH_MAX)
+            && (year >= YEAR_MIN && year <= YEAR_MAX))
+        {
+            date->day = day;
+            date->month = month;
+            date->year = year;
+
+            returnValue = 0;
+        }
+    }
+
+    return returnValue;
+}
+
 int input_concatStrings(char firstString[], char secondString[], int maxLenght)
 {
     int returnValue = -1;
