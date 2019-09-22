@@ -13,12 +13,15 @@
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de cadena de caracteres. >*/
 #define STRING_AS_NUMBER_MAX 64 /**< Buffer de entrada maximo para cadenas numericas. >*/
 #define STRING_MAX 256 /**< Se define la maxima cantidad de caracteres. >*/
-#define DAY_MIN 1
-#define DAY_MAX 31
-#define MONTH_MIN 1
-#define MONTH_MAX 12
-#define YEAR_MIN 1900
-#define YEAR_MAX 2100
+#define DAY_MIN 1 /**< Dia minimo de cada mes. >*/
+#define DAY_28 28 /**< Dia maximo de febrero de anio no bisiesto. >*/
+#define DAY_29 29 /**< Dia maximo de febrero de anio bisiesto. >*/
+#define DAY_30 30 /**< Dia maximo de abril, junio, septiembre y noviembre. >*/
+#define DAY_31 31 /**< Dia maximo de enero, marzo, mayo, julio, agosto, octubre y diciembre. >*/
+#define MONTH_MIN 1 /**< Mes minimo de cada anio. >*/
+#define MONTH_MAX 12 /**< Mes maximo de cada anio. >*/
+#define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
+#define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
 
 /*! \struct sDate
  * \brief Tipo de Dato generico para almacenar una fecha.

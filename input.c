@@ -4,7 +4,7 @@
  *  es un numero decimal.
  *
  * \param stringValue[] char Direccion de la cadena a evaluar.
- * \return int Si es un numero decimal retorna [0] si no [-1].
+ * \return int Si es un numero decimal retorna [1] si no [0].
  *
  */
 static int isNumber(char stringValue[]);
@@ -13,10 +13,18 @@ static int isNumber(char stringValue[]);
  *  es un numero flontante.
  *
  * \param stringValue[] char Direccion de la cadena a evaluar.
- * \return int Si es un numero flotante retorna [0] si no [-1].
+ * \return int Si es un numero flotante retorna [1] si no [0].
  *
  */
 static int isFloat(char stringValue[]);
+
+/** \brief Funcion que evalua si la fecha ingresada es válida
+ *
+ * \param date sDate Fecha a evaluar.
+ * \return int Si es una fecha retorna [1] si no [0].
+ *
+ */
+static int isDate(sDate date);
 
 void input_clearBufferAfter()
 {
@@ -108,12 +116,12 @@ int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int 
             scanf("%s", stringNumber);
 
             numberIndicator = isNumber(stringNumber);
-            if(!numberIndicator)
+            if(numberIndicator)
             {
                 convertedNumber = atoi(stringNumber);
             }
-        } while(numberIndicator ||
-            (!numberIndicator && (convertedNumber < lowLimit || convertedNumber > hiLimit)));
+        } while(!numberIndicator ||
+            (numberIndicator && (convertedNumber < lowLimit || convertedNumber > hiLimit)));
 
         if(convertedNumber >= lowLimit && convertedNumber <= hiLimit)
         {
@@ -157,12 +165,12 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
             scanf("%s", stringNumber);
 
             numberIndicator = isFloat(stringNumber);
-            if(!numberIndicator)
+            if(numberIndicator)
             {
                 convertedNumber = atof(stringNumber);
             }
-        } while(numberIndicator ||
-            (!numberIndicator && (convertedNumber < lowLimit || convertedNumber > hiLimit)));
+        } while(!numberIndicator ||
+            (numberIndicator && (convertedNumber < lowLimit || convertedNumber > hiLimit)));
 
         if(convertedNumber >= lowLimit && convertedNumber <= hiLimit)
         {
@@ -272,9 +280,7 @@ int input_getDate(sDate* date, char message[], char eMessage[])
 {
     int returnValue = -1;
     int counter = 0;
-    int day;
-    int month;
-    int year;
+    sDate dateAux;
 
     if(date != NULL && message != NULL && eMessage != NULL)
     {
@@ -292,22 +298,18 @@ int input_getDate(sDate* date, char message[], char eMessage[])
             }
 
             setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
-            if(scanf("%d/%d/%d", &day, &month, &year) != 3)
+            if(scanf("%d/%d/%d", &dateAux.day, &dateAux.month, &dateAux.year) != 3)
             {
                 input_clearBufferAfter();
                 continue;
             }
-        } while ((day < DAY_MIN || day > DAY_MAX)
-            || (month < MONTH_MIN || month > MONTH_MAX)
-            || (year < YEAR_MIN || year > YEAR_MAX));
+        } while (!isDate(dateAux));
 
-        if((day >= DAY_MIN && day <= DAY_MAX)
-            && (month >= MONTH_MIN && month <= MONTH_MAX)
-            && (year >= YEAR_MIN && year <= YEAR_MAX))
+        if(isDate(dateAux))
         {
-            date->day = day;
-            date->month = month;
-            date->year = year;
+            date->day = dateAux.day;
+            date->month = dateAux.month;
+            date->year = dateAux.year;
 
             returnValue = 0;
         }
@@ -390,7 +392,7 @@ void input_printNumberByType(char message[], float number)
 
 static int isNumber(char stringValue[])
 {
-    int returnValue = -1;  /**< Variable de retorno. >*/
+    int returnValue = 0;  /**< Variable de retorno. >*/
     int i = 0; /**< Variable contador de ciclos de cada caracter de la cadena. >*/
 
     char charAux; /**< Variable para almacenar el caracter actual del ciclo. >*/
@@ -405,11 +407,11 @@ static int isNumber(char stringValue[])
 
         if((int)charAux >= (int)'0' && (int)charAux <= (int)'9')
         {
-            returnValue = 0;
+            returnValue = 1;
         }
         else
         {
-            returnValue = -1;
+            returnValue = 0;
             break;
         }
         i++;
@@ -420,7 +422,7 @@ static int isNumber(char stringValue[])
 
 static int isFloat(char stringValue[])
 {
-    int returnValue = -1;  /**< Variable de retorno. >*/
+    int returnValue = 0;  /**< Variable de retorno. >*/
     int i = 0; /**< Variable contador de ciclos de cada caracter de la cadena. >*/
     int pointerCounter = 0; /**< Variable para almacenar la cantidad de puntos de la cadena. >*/
 
@@ -441,15 +443,58 @@ static int isFloat(char stringValue[])
             if((int)stringValue[i] >= (int)'0'
                 && (int)stringValue[i] <= (int)'9' && pointerCounter <= 1)
             {
-                returnValue = 0;
+                returnValue = 1;
             }
             else
             {
-                returnValue = -1;
+                returnValue = 0;
                 break;
             }
         }
         i++;
+    }
+
+    return returnValue;
+}
+
+static int isDate(sDate date)
+{
+    int returnValue = 0;
+
+    if(date.year >= YEAR_MIN && date.year <= YEAR_MAX
+        && date.month >= MONTH_MIN && date.month <= MONTH_MAX)
+    {
+        switch (date.month)
+        {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                if(date.day >= DAY_MIN && date.day <= DAY_31)
+                {
+                    returnValue = 1;
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if(date.day >= DAY_MIN && date.day <= DAY_30)
+                {
+                    returnValue = 1;
+                }
+                break;
+            case 2:
+                if((date.year % 4 == 0 && date.day >= DAY_MIN && date.day <= DAY_29)
+                    || (date.year % 4 != 0 && date.day >= DAY_MIN && date.day <= DAY_28))
+                {
+                    returnValue = 1;
+                }
+                break;
+        }
     }
 
     return returnValue;
