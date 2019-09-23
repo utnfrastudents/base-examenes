@@ -8,6 +8,8 @@
                 "-o",
                 "bin/Debug/base-practica-c",
                 "input.c",
+                "arrays.c",
+                "structs.c",
                 "main.c"
             ],
             "problemMatcher": [
@@ -26,6 +28,8 @@
                 "-o",
                 "bin/Debug/base-practica-c.exe",
                 "input.c",
+                "arrays.c",
+                "structs.c",
                 "main.c"
             ],
             "problemMatcher": []

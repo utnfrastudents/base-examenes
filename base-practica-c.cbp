@@ -30,6 +30,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="structs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="structs.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />

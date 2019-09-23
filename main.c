@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "structs.h"
 
 int main()
 {
