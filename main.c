@@ -1,4 +1,4 @@
-#include "input.h"
+#include "arrays.h"
 
 int main()
 {

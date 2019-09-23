@@ -10,12 +10,20 @@ OBJ = main.o
 INPC = input.c
 INPH = input.h
 INPO = input.o
+ARRC = arrays.c
+ARRH = arrays.h
+ARRO = arrays.o
 
-$(PROJECT): $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
+debug: $(PROJECT)
+	./$(EXEDIR)$^
+$(PROJECT): $(OBJDIR)$(INPO) $(OBJDIR)$(ARRO) $(OBJDIR)$(OBJ)
 	$(CC) $(WFLAGS) $^ -o $(EXEDIR)$@
-$(OBJDIR)$(OBJ): $(INPH) $(SRC)
+$(OBJDIR)$(OBJ): $(ARRH) $(SRC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$(SRC)
+$(OBJDIR)$(ARRO): $(ARRC)
+	cd $(OBJDIR) \
+	&& $(CC) $(CFLAGS) $(UPDIR)$^
 $(OBJDIR)$(INPO): $(INPC)
 	mkdir -p $(OBJDIR) \
 	&& mkdir -p $(EXEDIR) \
@@ -23,5 +31,3 @@ $(OBJDIR)$(INPO): $(INPC)
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 clean:
 	$(RM) $(PROJECT).layout $(PROJECT).depend $(OBJDIR)*.o $(EXEDIR)$(PROJECT)
-debug: $(PROJECT)
-	./$(EXEDIR)$^

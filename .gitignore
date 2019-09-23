@@ -24,7 +24,7 @@ $RECYCLE.BIN/
 # =====================
 # Compiled binary files
 # =====================
-bin/Debug/*
+bin/Debug/base-practica-c
 
 # Extensions
 *.o
