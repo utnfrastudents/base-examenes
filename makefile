@@ -4,6 +4,7 @@ EXEDIR = bin/Debug/
 prefix = /usr/bin
 UPDIR = ../../
 CFLAGS = -c
+RMFLAGS = -rf
 WFLAGS = -Wall
 SRC = main.c
 OBJ = main.o
@@ -28,12 +29,13 @@ $(OBJDIR)$(INPO): $(INPC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 $(OBJDIR)$(ARRO): $(ARRC)
-	cd $(OBJDIR) \
-	&& $(CC) $(CFLAGS) $(UPDIR)$^
-$(OBJDIR)$(STRO): $(STRC)
 	mkdir -p $(OBJDIR) \
 	&& mkdir -p $(EXEDIR) \
 	&& cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
+$(OBJDIR)$(STRO): $(STRC)
+	cd $(OBJDIR) \
+	&& $(CC) $(CFLAGS) $(UPDIR)$^
 clean:
-	$(RM) $(PROJECT).layout $(PROJECT).depend $(OBJDIR)*.o $(EXEDIR)$(PROJECT)
+	$(RM) $(PROJECT).layout $(PROJECT).depend \
+	&& $(RM) $(RMFLAGS) bin/ obj/
