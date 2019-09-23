@@ -78,3 +78,88 @@ int arrays_swapString(char string1[], char string2[])
 
     return returnValue;
 }
+
+int arrays_concatStrings(char firstString[], char secondString[], int maxLenght)
+{
+    int returnValue = -1;
+
+    if(firstString != NULL && secondString != NULL
+        && (strlen(firstString) + strlen(secondString)) < maxLenght
+        && maxLenght < STRING_MAX && maxLenght > 0)
+    {
+        strncat(firstString, secondString, maxLenght);
+
+        /**< Se controla el uso de memoria agregando el caracter terminador. */
+        firstString[maxLenght] = EXIT_BUFFER;
+
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
+char* arrays_stringToUppercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = toupper((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
+}
+
+char* arrays_stringToLowercase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int i = 0;
+
+    if(string != NULL && maxLength < STRING_MAX && maxLength > 0)
+    {
+        while(i <= maxLength || auxString[i] == EXIT_BUFFER)
+        {
+            auxString[i] = tolower((char)auxString[i]);
+            i++;
+        }
+
+        auxString[maxLength] = EXIT_BUFFER;
+    }
+
+    return auxString;
+}
+
+char* arrays_stringToCamelCase(char string[], int maxLength)
+{
+    char* auxString = string;
+    int position = 0;
+
+    if(string != NULL && maxLength > 0 && maxLength <= STRING_MAX)
+    {
+        while(position <= maxLength && auxString[position] != EXIT_BUFFER)
+        {
+            if((position == 0 && auxString[position] != ' ')
+                || (position > 0 && auxString[position - 1] == ' ' && auxString[position] != ' '))
+            {
+                auxString[position] = toupper((char)auxString[position]);
+            }
+            else
+            {
+                auxString[position] = tolower((char)auxString[position]);
+            }
+
+            position++;
+        }
+
+        auxString[position] = EXIT_BUFFER;
+    }
+
+    return auxString;
+}
