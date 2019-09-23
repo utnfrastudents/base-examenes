@@ -57,7 +57,7 @@ int arrays_swapChar(char* i, char* j)
     return returnValue;
 }
 
-int arrays_swapStrings(char string1[], char string2[])
+int arrays_swapString(char string1[], char string2[])
 {
     int returnValue = -1;
     char aux1[STRING_MAX];

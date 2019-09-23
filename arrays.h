@@ -37,6 +37,6 @@ int arrays_swapChar(char* i, char* j);
  * \return Si el intercambio se realizo devuelve [0] si no [-1].
  * 
  */
-int arrays_swapStrings(char string1[], char string2[]);
+int arrays_swapString(char string1[], char string2[]);
 
 #endif // ARRAYS_H_INCLUDED
