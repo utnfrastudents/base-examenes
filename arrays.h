@@ -3,6 +3,12 @@
 
 #include "input.h"
 
+int arrays_swapInt(int* i, int* j);
+
+int arrays_swapFloat(float* i, float* j);
+
+int arrays_swapChar(char* i, char* j);
+
 /** \brief Funcion de intercambio de cadenas de caracteres.
  * 
  * \param string1[] char Primer cadena de caracteres.

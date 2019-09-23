@@ -1,5 +1,62 @@
 #include "arrays.h"
 
+int arrays_swapInt(int* i, int* j)
+{
+    int returnValue = -1;
+    int aux1;
+    int aux2;
+
+    aux1 = *i;
+    aux2 = *j;
+    *i = *j;
+    *j = aux1;
+
+    if(*i == aux2 && *j == aux1)
+    {
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
+int arrays_swapFloat(float* i, float* j)
+{
+    int returnValue = -1;
+    float aux1;
+    float aux2;
+
+    aux1 = *i;
+    aux2 = *j;
+    *i = *j;
+    *j = aux1;
+
+    if(*i == aux2 && *j == aux1)
+    {
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
+int arrays_swapChar(char* i, char* j)
+{
+    int returnValue = -1;
+    char aux1;
+    char aux2;
+
+    aux1 = *i;
+    aux2 = *j;
+    *i = *j;
+    *j = aux1;
+
+    if(*i == aux2 && *j == aux1)
+    {
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
 int arrays_swapStrings(char string1[], char string2[])
 {
     int returnValue = -1;
