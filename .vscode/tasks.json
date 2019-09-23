@@ -7,6 +7,8 @@
             "args": [
                 "-o",
                 "bin/Debug/base-practica-c",
+                "structs.c",
+                "arrays.c",
                 "input.c",
                 "main.c"
             ],
@@ -25,6 +27,8 @@
             "args": [
                 "-o",
                 "bin/Debug/base-practica-c.exe",
+                "structs.c",
+                "arrays.c",
                 "input.c",
                 "main.c"
             ],
