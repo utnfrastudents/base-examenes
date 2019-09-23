@@ -14,6 +14,8 @@ ARRC = arrays.c
 ARRH = arrays.h
 ARRO = arrays.o
 
+debug: $(PROJECT)
+	./$(EXEDIR)$^
 $(PROJECT): $(OBJDIR)$(INPO) $(OBJDIR)$(ARRO) $(OBJDIR)$(OBJ)
 	$(CC) $(WFLAGS) $^ -o $(EXEDIR)$@
 $(OBJDIR)$(OBJ): $(ARRH) $(SRC)
@@ -29,5 +31,3 @@ $(OBJDIR)$(INPO): $(INPC)
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 clean:
 	$(RM) $(PROJECT).layout $(PROJECT).depend $(OBJDIR)*.o $(EXEDIR)$(PROJECT)
-debug: $(PROJECT)
-	./$(EXEDIR)$^
