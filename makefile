@@ -7,9 +7,9 @@ CFLAGS = -c
 WFLAGS = -Wall
 SRC = main.c
 OBJ = main.o
-INPC = input.c
-INPH = input.h
-INPO = input.o
+INPC = inputs.c
+INPH = inputs.h
+INPO = inputs.o
 ARRC = arrays.c
 ARRH = arrays.h
 ARRO = arrays.o
@@ -19,18 +19,18 @@ STRO = structs.o
 
 debug: $(PROJECT)
 	./$(EXEDIR)$^
-$(PROJECT): $(OBJDIR)$(INPO) $(OBJDIR)$(ARRO) $(OBJDIR)$(STRO) $(OBJDIR)$(OBJ)
+$(PROJECT): $(OBJDIR)$(ARRO) $(OBJDIR)$(STRO) $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
 	$(CC) $(WFLAGS) $^ -o $(EXEDIR)$@
-$(OBJDIR)$(OBJ): $(STRH) $(SRC)
+$(OBJDIR)$(OBJ): $(INPH) $(SRC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$(SRC)
-$(OBJDIR)$(STRO): $(STRC)
+$(OBJDIR)$(INPO): $(INPC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 $(OBJDIR)$(ARRO): $(ARRC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
-$(OBJDIR)$(INPO): $(INPC)
+$(OBJDIR)$(STRO): $(STRC)
 	mkdir -p $(OBJDIR) \
 	&& mkdir -p $(EXEDIR) \
 	&& cd $(OBJDIR) \

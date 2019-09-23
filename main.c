@@ -1,10 +1,10 @@
-#include "structs.h"
+#include "inputs.h"
 
 int main()
 {
-    input_clearScreen();
+    inputs_clearScreen();
 
-    input_pauseScreen("Hola Mundo...");
+    inputs_pauseScreen("Hola Mundo...");
 
     return 0;
 }

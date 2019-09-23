@@ -1,4 +1,4 @@
-#include "input.h"
+#include "inputs.h"
 
 /** \brief Funcion que evalua si una cadena ingresada por teclado
  *  es un numero decimal.
@@ -26,7 +26,7 @@ static int isFloat(char stringValue[]);
  */
 static int isDate(sDate date);
 
-void input_clearBufferAfter()
+void inputs_clearBufferAfter()
 {
     /**< Mientras que en el buffer no exista un Enter
     la funcion getchar toma sus valores. */
@@ -36,7 +36,7 @@ void input_clearBufferAfter()
     }
 }
 
-void input_clearScreen()
+void inputs_clearScreen()
 {
     /**< Para los sistemas basados en UNIX. */
     #if defined (__unix__) || defined (__APPLE__) || defined (__MACH__)
@@ -50,7 +50,7 @@ void input_clearScreen()
     #endif
 }
 
-void input_pauseScreen(char message[])
+void inputs_pauseScreen(char message[])
 {
     printf("%s", message);
 
@@ -59,7 +59,7 @@ void input_pauseScreen(char message[])
     getchar(); /**< Metodo para pausar la ejecucion del programa. */
 }
 
-int input_getNumberType(float number)
+int inputs_getNumberType(float number)
 {
     int returnEvaluation; /**< Se almacena el indicador de tipo de numero. >*/
     float floorNumber; /**< Se almacena la parte entera de un numero. >*/
@@ -85,7 +85,7 @@ int input_getNumberType(float number)
     return returnEvaluation;
 }
 
-int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
+int inputs_getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {
     int returnValue = -1; /**< Variable de retorno. >*/
     int counter = 0; /**< Variable contador de ciclos de solicitudes al usuario. >*/
@@ -133,7 +133,7 @@ int input_getInt(int* input, char message[], char eMessage[], int lowLimit, int 
     return returnValue;
 }
 
-int input_getFloat(float* input, char message[], char eMessage[], float lowLimit, float hiLimit)
+int inputs_getFloat(float* input, char message[], char eMessage[], float lowLimit, float hiLimit)
 {
     int returnValue = -1; /**< Variable de retorno. >*/
     int counter = 0; /**< Variable contador de ciclos de solicitudes al usuario. >*/
@@ -182,7 +182,7 @@ int input_getFloat(float* input, char message[], char eMessage[], float lowLimit
     return returnValue;
 }
 
-int input_getChar(char* input, char message[], char eMessage[], char lowLimit, char hiLimit)
+int inputs_getChar(char* input, char message[], char eMessage[], char lowLimit, char hiLimit)
 {
     int returnValue = -1; /**< Variable de retorno. >*/
     int counter = 0; /**< Variable contador de ciclos de solicitudes al usuario. >*/
@@ -223,7 +223,7 @@ int input_getChar(char* input, char message[], char eMessage[], char lowLimit, c
     return returnValue;
 }
 
-int input_getString(char* input, char message[], char eMessage[], int lowLimit, int hiLimit)
+int inputs_getString(char* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {
     int returnValue = -1; /**< Variable de retorno. >*/
     int counter = 0; /**< Variable contador de ciclos de solicitudes al usuario. >*/
@@ -276,7 +276,7 @@ int input_getString(char* input, char message[], char eMessage[], int lowLimit, 
     return returnValue;
 }
 
-int input_getDate(sDate* date, char message[], char eMessage[])
+int inputs_getDate(sDate* date, char message[], char eMessage[])
 {
     int returnValue = -1;
     int counter = 0;
@@ -300,7 +300,7 @@ int input_getDate(sDate* date, char message[], char eMessage[])
             setbuf(stdin, NULL); /**< Limpieza de buffer previo. */
             if(scanf("%d/%d/%d", &dateAux.day, &dateAux.month, &dateAux.year) != 3)
             {
-                input_clearBufferAfter();
+                inputs_clearBufferAfter();
                 continue;
             }
         } while (!isDate(dateAux));
@@ -318,9 +318,9 @@ int input_getDate(sDate* date, char message[], char eMessage[])
     return returnValue;
 }
 
-void input_printNumberByType(char message[], float number)
+void inputs_printNumberByType(char message[], float number)
 {
-    switch (input_getNumberType(number))
+    switch (inputs_getNumberType(number))
     {
         case 1:
             /**< Se imprime en consola el numero como entero */
@@ -443,7 +443,7 @@ static int isDate(sDate date)
     return returnValue;
 }
 
-int input_userResponse(char message[])
+int inputs_userResponse(char message[])
 {
     int returnValue = 0;
     char response;
@@ -459,7 +459,7 @@ int input_userResponse(char message[])
             returnValue = 1;
         }
 
-        input_clearBufferAfter();
+        inputs_clearBufferAfter();
     }
 
     return returnValue;
