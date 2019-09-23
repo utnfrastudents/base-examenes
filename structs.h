@@ -29,11 +29,22 @@ typedef struct
     int year; /**< Valor del anio de la fecha. >*/
 } sDate;
 
-/** \brief
+/** \brief Funcion que evalua si la fecha ingresada es válida
+ *
+ * \param date sDate Fecha a evaluar.
+ * \return Si es una fecha retorna [1] si no [0].
+ *
+ */
+int structs_isDate(sDate date);
+
+/** \brief Funcion que compara dos fechas.
  * 
- * \param
- * \param
- * \return
+ * \param date1 sDate Primer fecha.
+ * \param date2 sDate Segunda fecha.
+ * \return Si son iguales retorna [0].
+ *      Si la primer fecha es posterior [1].
+ *      Si la segunda fecha es posterior [-1].
+ *      Si hubo un error [-2].
  * 
  */
 int structs_dateCompare(sDate date1, sDate date2);

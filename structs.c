@@ -1,46 +1,92 @@
 #include "structs.h"
 
+int structs_isDate(sDate date)
+{
+    int returnValue = 0;
+
+    if(date.year >= YEAR_MIN && date.year <= YEAR_MAX
+        && date.month >= MONTH_MIN && date.month <= MONTH_MAX)
+    {
+        switch (date.month)
+        {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                if(date.day >= DAY_MIN && date.day <= DAY_31)
+                {
+                    returnValue = 1;
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if(date.day >= DAY_MIN && date.day <= DAY_30)
+                {
+                    returnValue = 1;
+                }
+                break;
+            case 2:
+                if((date.year % 4 == 0 && date.day >= DAY_MIN && date.day <= DAY_29)
+                    || (date.year % 4 != 0 && date.day >= DAY_MIN && date.day <= DAY_28))
+                {
+                    returnValue = 1;
+                }
+                break;
+        }
+    }
+
+    return returnValue;
+}
+
 int structs_dateCompare(sDate date1, sDate date2)
 {
-    int returnValue;
+    int returnValue = -2;
 
-    if(date1.year > date2.year)
+    if(structs_isDate(date1) && structs_isDate(date2))
     {
-        returnValue = 1;
-    }
-    else
-    {
-        if(date1.year < date2.year)
+        if(date1.year > date2.year)
         {
-            returnValue = -1;
+            returnValue = 1;
         }
         else
         {
-            if(date1.month > date2.month)
+            if(date1.year < date2.year)
             {
-                returnValue = 1;
+                returnValue = -1;
             }
             else
             {
-                if(date1.month < date2.month)
+                if(date1.month > date2.month)
                 {
-                    returnValue = -1;
+                    returnValue = 1;
                 }
                 else
                 {
-                    if(date1.day > date2.day)
+                    if(date1.month < date2.month)
                     {
-                        returnValue = 1;
+                        returnValue = -1;
                     }
                     else
                     {
-                        if(date1.day < date2.day)
+                        if(date1.day > date2.day)
                         {
-                            returnValue = -1;
+                            returnValue = 1;
                         }
                         else
                         {
-                            returnValue = 0;
+                            if(date1.day < date2.day)
+                            {
+                                returnValue = -1;
+                            }
+                            else
+                            {
+                                returnValue = 0;
+                            }
                         }
                     }
                 }

@@ -34,6 +34,24 @@ void inputs_clearScreen(void);
  */
 void inputs_pauseScreen(char message[]);
 
+/** \brief Funcion que evalua si una cadena ingresada por teclado
+ *  es un numero decimal.
+ *
+ * \param stringValue[] char Direccion de la cadena a evaluar.
+ * \return int Si es un numero decimal retorna [1] si no [0].
+ *
+ */
+int inputs_isNumber(char stringValue[]);
+
+/** \brief Funcion que evalua si una cadena ingresada por teclado
+ *  es un numero flontante.
+ *
+ * \param stringValue[] char Direccion de la cadena a evaluar.
+ * \return int Si es un numero flotante retorna [1] si no [0].
+ *
+ */
+int inputs_isFloat(char stringValue[]);
+
 /** \brief Solicita un numero flotante al usuario e indica su tipo.
  *
  * \param number float Numero con o sin decimales a evaluar.
