@@ -1,6 +1,6 @@
 PROJECT = base-practica-c
 OBJDIR = obj/Debug/
-EXEDIR = bin/Debug/
+DEBUGDIR = bin/Debug/
 prefix = /usr/bin
 UPDIR = ../../
 CFLAGS = -c
@@ -19,9 +19,9 @@ STRH = structs.h
 STRO = structs.o
 
 debug: $(PROJECT)
-	./$(EXEDIR)$^
-$(PROJECT): $(OBJDIR)$(ARRO) $(OBJDIR)$(STRO) $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
-	$(CC) $(WFLAGS) $^ -o $(EXEDIR)$@
+	./$(DEBUGDIR)$^
+$(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
+	$(CC) $(WFLAGS) $^ -o $(DEBUGDIR)$@
 $(OBJDIR)$(OBJ): $(INPH) $(SRC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$(SRC)
@@ -29,12 +29,12 @@ $(OBJDIR)$(INPO): $(INPC)
 	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 $(OBJDIR)$(ARRO): $(ARRC)
-	mkdir -p $(OBJDIR) \
-	&& mkdir -p $(EXEDIR) \
-	&& cd $(OBJDIR) \
+	cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 $(OBJDIR)$(STRO): $(STRC)
-	cd $(OBJDIR) \
+	mkdir -p $(OBJDIR) \
+	&& mkdir -p $(DEBUGDIR) \
+	&& cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^
 clean:
 	$(RM) $(PROJECT).layout $(PROJECT).depend \
