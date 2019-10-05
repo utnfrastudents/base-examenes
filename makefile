@@ -9,6 +9,9 @@ WFLAGS = -Wall
 LOG = >> build.log
 SRC = main.c
 OBJ = main.o
+PERC = persons.c
+PERH = persons.h
+PERO = persons.o
 INPC = inputs.c
 INPH = inputs.h
 INPO = inputs.o
@@ -24,12 +27,16 @@ build: $(PROJECT)
 	@date $(LOG) \
 	&& echo "Se ejecuta el programa." $(LOG) \
 	&& ./$(DEBUGDIR)$^
-$(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
+$(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(PERO) $(OBJDIR)$(OBJ)
 	@$(CC) $(WFLAGS) $^ -o $(DEBUGDIR)$@
-$(OBJDIR)$(OBJ): $(INPH) $(SRC)
+$(OBJDIR)$(OBJ): $(PERH) $(SRC)
 	@cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$(SRC) \
 	&& cd $(UPDIR) && echo "Se compila a codigo objeto main.c" $(LOG)
+$(OBJDIR)$(PERO): $(PERC)
+	@cd $(OBJDIR) \
+	&& $(CC) $(CFLAGS) $(UPDIR)$^ \
+	&& cd $(UPDIR) && echo "Se compila a codigo objeto persons.c" $(LOG)
 $(OBJDIR)$(INPO): $(INPC)
 	@cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^ \

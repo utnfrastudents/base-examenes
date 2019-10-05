@@ -10,6 +10,7 @@
                 "structs.c",
                 "arrays.c",
                 "input.c",
+                "persons.c",
                 "main.c"
             ],
             "problemMatcher": [
@@ -30,6 +31,7 @@
                 "structs.c",
                 "arrays.c",
                 "input.c",
+                "persons.c",
                 "main.c"
             ],
             "problemMatcher": []

@@ -30,6 +30,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="persons.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="persons.h" />
 		<Unit filename="structs.c">
 			<Option compilerVar="CC" />
 		</Unit>

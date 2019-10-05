@@ -41,7 +41,7 @@ void beforeMain()
 void afterMain() 
 { 
     inputs_clearScreen();
-    inputs_pauseScreen("Thanks for using this library\nSee more at https://github.com/utnfrastudents/base-practica-c"); 
+    inputs_pauseScreen("Thanks for using this library!\nCan contribute in https://github.com/utnfrastudents/base-practica-c"); 
 }
 
 int inputs_isNumber(char stringValue[])

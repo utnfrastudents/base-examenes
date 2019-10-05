@@ -16,6 +16,7 @@
 #define MONTH_MAX 12 /**< Mes maximo de cada anio. >*/
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
+#define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de Personas. >*/
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
@@ -57,6 +58,7 @@ typedef struct
  * \field lastName[] char Apellido de la Persona.
  * \field date sDate Fecha de la Persona.
  * \field idEntity int Clave foranea del ID de una Entidad.
+ * \field isEmpty int Indicador de registro lleno o vacio.
  * 
  */
 typedef struct
@@ -66,6 +68,7 @@ typedef struct
     char lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
     sDate date; /**< Fecha de la Persona. >*/
     int idEntity; /**< Clave foranea del ID de una Entidad. >*/
+    int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sPerson;
 
 /*! \struct sObject

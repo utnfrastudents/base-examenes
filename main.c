@@ -12,7 +12,7 @@
  *      Christian Grimberg
  *
  ************************************************************************/
-#include "inputs.h"
+#include "persons.h"
 
 int main()
 {
