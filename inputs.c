@@ -33,6 +33,17 @@ void inputs_pauseScreen(char message[])
     getchar(); /**< Metodo para pausar la ejecucion del programa. */
 }
 
+void beforeMain() 
+{ 
+    inputs_pauseScreen("--> UTN FRA Students Base C Library <--"); 
+}
+
+void afterMain() 
+{ 
+    inputs_clearScreen();
+    inputs_pauseScreen("Thanks for using this library\nSee more at https://github.com/utnfrastudents/base-practica-c"); 
+}
+
 int inputs_isNumber(char stringValue[])
 {
     int returnValue = 0;  /**< Variable de retorno. >*/

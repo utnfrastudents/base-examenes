@@ -34,6 +34,22 @@ void inputs_clearScreen(void);
  */
 void inputs_pauseScreen(char message[]);
 
+/** \brief Funcion que se invoca antes de la funcion principal.
+ * 
+ * \param void No requiere parametros.
+ * \return void No retorna valores.
+ * 
+ */
+void beforeMain(void) __attribute__ ((constructor));
+
+/** \brief Funcion que se invoca despues de la funcion principal.
+ * 
+ * \param void No requiere parametros.
+ * \return void No retorna valores.
+ * 
+ */
+void afterMain(void) __attribute__ ((destructor)); 
+
 /** \brief Funcion que evalua si una cadena ingresada por teclado
  *  es un numero decimal.
  *
