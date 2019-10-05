@@ -20,11 +20,11 @@
 #define FALSE 0 /**< Valor booleano de falso. >*/
 
 /*! \struct sDate
- * \brief Tipo de Dato generico para almacenar una fecha.
+ * \brief Tipo de Dato generico para almacenar una Fecha.
  * 
- * \field day Valor del dia de la fecha.
- * \field month Valor del mes de la fecha.
- * \field year Valor del anio de la fecha.
+ * \field day int Valor del dia de la Fecha.
+ * \field month int Valor del mes de la Fecha.
+ * \field year int Valor del anio de la Fecha.
  * 
  */
 typedef struct
@@ -34,17 +34,34 @@ typedef struct
     int year; /**< Valor del anio de la fecha. >*/
 } sDate;
 
+/*! \struct sEntity
+ * \brief Tipo de dato generico de una Entidad.
+ * 
+ * \field idEntity int Campo ID de una Entidad.
+ * \field description[] char Descripcion de la Entidad.
+ * 
+ */
 typedef struct
 {
     int idEntity; /**< Campo ID de una Entidad. >*/
-    int description[ENTITY_NAME_MAX]; /**< Descripcion de la Entidad. >*/
+    char description[ENTITY_NAME_MAX]; /**< Descripcion de la Entidad. >*/
 } sEntity;
 
+/*! \struct sPerson
+ * \brief Tipo de dato generico de una Persona.
+ * 
+ * \field idPerson int Campo ID de una Persona.
+ * \field name[] char Nombre de la Persona.
+ * \field lastName[] char Apellido de la Persona.
+ * \field date sDate Fecha de la Persona.
+ * \field idEntity int Clave foranea del ID de una Entidad.
+ * 
+ */
 typedef struct
 {
     int idPerson; /**< Campo ID de una Persona. >*/
-    int name[PERSON_NAME_MAX]; /**< Nombre de la Persona. >*/
-    int lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
+    char name[PERSON_NAME_MAX]; /**< Nombre de la Persona. >*/
+    char lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
     sDate date; /**< Fecha de la Persona. >*/
     int idEntity; /**< Clave foranea del ID de una Entidad. >*/
 } sPerson;
