@@ -16,6 +16,7 @@
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
+#define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
 #define TRUE 1 /**< Valor booleano de verdadero. >*/
 #define FALSE 0 /**< Valor booleano de falso. >*/
 
@@ -65,6 +66,35 @@ typedef struct
     sDate date; /**< Fecha de la Persona. >*/
     int idEntity; /**< Clave foranea del ID de una Entidad. >*/
 } sPerson;
+
+/*! \struct sObject
+ * \brief Tipo de dato generico de tipo Objeto.
+ * 
+ * \field idObject int Campo ID de un Objeto.
+ * \field description[] char Descripcion del Objeto.
+ * 
+ */
+typedef struct
+{
+    int idObject; /**< Campo ID de un Objeto.. >*/
+    char description[OBJECT_NAME_MAX]; /**< Descripcion del Objeto.. >*/
+} sObject;
+
+/*! \struct sPersonsObjets
+ * \brief Tipo de dato que relaciona a Personas con Objetos,
+ *      logrando una relacion de muchos a muchos.
+ * 
+ * \field idPersonObject int Campo ID de estructura de relacion de Personas y Objetos.
+ * \field idPerson int Clave foranea de ID de Persona.
+ * \field idObject int Clave foranea de ID de Objeto.
+ * 
+ */
+typedef struct
+{
+    int idPersonObject; /**< Campo ID de estructura de relacion de Personas y Objetos. >*/
+    int idPerson; /**< Clave foranea de ID de Persona. >*/
+    int idObject; /**< Clave foranea de ID de Objeto. >*/
+} sPersonsObjects;
 
 /** \brief Funcion que evalua si la fecha ingresada es válida
  *
