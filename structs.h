@@ -13,6 +13,9 @@
 #define MONTH_MAX 12 /**< Mes maximo de cada anio. >*/
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
+#define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
+#define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
+#define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define TRUE 1 /**< Valor booleano de verdadero. >*/
 #define FALSE 0 /**< Valor booleano de falso. >*/
 
@@ -30,6 +33,21 @@ typedef struct
     int month; /**< Valor del mes de la fecha. >*/
     int year; /**< Valor del anio de la fecha. >*/
 } sDate;
+
+typedef struct
+{
+    int idEntity; /**< Campo ID de una Entidad. >*/
+    int description[ENTITY_NAME_MAX]; /**< Descripcion de la Entidad. >*/
+} sEntity;
+
+typedef struct
+{
+    int idPerson; /**< Campo ID de una Persona. >*/
+    int name[PERSON_NAME_MAX]; /**< Nombre de la Persona. >*/
+    int lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
+    sDate date; /**< Fecha de la Persona. >*/
+    int idEntity; /**< Clave foranea del ID de una Entidad. >*/
+} sPerson;
 
 /** \brief Funcion que evalua si la fecha ingresada es válida
  *
