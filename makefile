@@ -18,7 +18,8 @@ STRC = structs.c
 STRH = structs.h
 STRO = structs.o
 
-debug: $(PROJECT)
+rebuild: clean build
+build: $(PROJECT)
 	./$(DEBUGDIR)$^
 $(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(OBJ)
 	$(CC) $(WFLAGS) $^ -o $(DEBUGDIR)$@
