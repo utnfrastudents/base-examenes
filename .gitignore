@@ -32,3 +32,4 @@ bin/Debug/base-practica-c.exe
 *.a
 *.layout
 *.depend
+*.log

@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TRUE 1 /**< Valor booleano de verdadero. >*/
+#define FALSE 0 /**< Valor booleano de falso. >*/
+#define DEBUG_MODE TRUE /**< Opcion para hacer uso del hardcoding y pausar para ver errores de compilacion. >*/
 #define DAY_MIN 1 /**< Dia minimo de cada mes. >*/
 #define DAY_28 28 /**< Dia maximo de febrero de anio no bisiesto. >*/
 #define DAY_29 29 /**< Dia maximo de febrero de anio bisiesto. >*/
@@ -17,8 +20,6 @@
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
-#define TRUE 1 /**< Valor booleano de verdadero. >*/
-#define FALSE 0 /**< Valor booleano de falso. >*/
 
 /*! \struct sDate
  * \brief Tipo de Dato generico para almacenar una Fecha.
