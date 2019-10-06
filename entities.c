@@ -28,6 +28,25 @@ int entities_init(sEntity list[], int length)
     return returnValue;
 }
 
+int entities_getById(sEntity list[], int length, int id)
+{
+    int returnValue = ERROR;
+
+    if(list != NULL && length > 0 && length <= ENTITIES_MAX)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            if(list[i].idEntity == id && list[i].isEmpty == FALSE)
+            {
+                returnValue = i;
+                break;
+            }
+        }
+    }
+
+    return returnValue;
+}
+
 void entities_hardcode(sEntity list[], int length, int quantity)
 {
     sEntity auxEntity[] = {

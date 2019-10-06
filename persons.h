@@ -43,10 +43,10 @@ int persons_getEmptyIndex(sPerson list[], int length);
  * 
  * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
  * \param length int Longitud del array.
- * \param id int Campo ID del Empleado a buscar.
+ * \param id int Campo ID de la Persona a buscar.
  * \return int
  *      [-1] Si no encuentra el ID ingresado.
- *      Encuentra el indice del Empleado buscado.
+ *      Encuentra el indice de la Persona buscada.
  * 
  */
 int persons_getById(sPerson list[], int length, int id);
@@ -54,14 +54,27 @@ int persons_getById(sPerson list[], int length, int id);
 /** \brief Funcion que agrega una Persona
  *      en el primer lugar vacio de la lista ingresada.
  * 
- * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
- * \param length int Longitud del array.
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
  * \param id int ID del Empleado.
  * \return int
  *      [-1] Si hubo un error en la carga de la Persona en la lista.
  *      [0] Si la carga de la Persona en la lista fue exitosa.
  *
  */
-int person_add(sPerson list[], int length);
+int person_add(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
+
+/** \brief Imprime en pantalla el contenido de la lista del tipo basado en Personas.
+ *
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int La cantidad de elementos impresos del arreglo del tipo basado en Personas.
+ *
+ */
+int persons_printList(sPerson personsList[], int personsLenght, sEntity entitiesList[], int entitiesLength);
 
 #endif // PERSONS_H_INCLUDED

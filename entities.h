@@ -26,6 +26,19 @@ int entities_getNewId(void);
  */
 int entities_init(sEntity list[], int length);
 
+/** \brief Funcion que obtiene el indice del arreglo de tipo Entidad
+ *          del ID ingresado como parametro.
+ * 
+ * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param length int Longitud del array.
+ * \param id int Campo ID del Entidad a buscar.
+ * \return int
+ *      [-1] Si no encuentra el ID ingresado.
+ *      Encuentra el indice del Entidad buscado.
+ * 
+ */
+int entities_getById(sEntity list[], int length, int id);
+
 /** \brief Funcion que carga valores de muestra a un arreglo de tipo Entidad
  *      dependiendo de la cantidad definida como parametro.
  *

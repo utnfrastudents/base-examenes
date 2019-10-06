@@ -70,7 +70,6 @@ typedef struct
     int idPerson; /**< Campo ID de una Persona. >*/
     char name[PERSON_NAME_MAX]; /**< Nombre de la Persona. >*/
     char lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
-    sDate date; /**< Fecha de la Persona. >*/
     int idEntity; /**< Clave foranea del ID de una Entidad. >*/
     int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sPerson;
@@ -102,6 +101,7 @@ typedef struct
     int idPersonObject; /**< Campo ID de estructura de relacion de Personas y Objetos. >*/
     int idPerson; /**< Clave foranea de ID de Persona. >*/
     int idObject; /**< Clave foranea de ID de Objeto. >*/
+    sDate date; /**< Fecha de la relacion. >*/
 } sPersonsObjects;
 
 /** \brief Funcion que evalua si la fecha ingresada es válida
