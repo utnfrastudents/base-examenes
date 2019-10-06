@@ -35,13 +35,13 @@ void inputs_pauseScreen(char message[])
 
 void beforeMain() 
 { 
-    inputs_pauseScreen("--> UTN FRA Students Base C Library <--"); 
+    inputs_pauseScreen(START_MESSAGE); 
 }
 
 void afterMain() 
 { 
     inputs_clearScreen();
-    inputs_pauseScreen("Thanks for using this library!\nCan contribute in https://github.com/utnfrastudents/base-practica-c"); 
+    inputs_pauseScreen(EXIT_MESSAGE); 
 }
 
 int inputs_isNumber(char stringValue[])

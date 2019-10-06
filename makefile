@@ -6,7 +6,7 @@ UPDIR = ../../
 CFLAGS = -c
 RMFLAGS = -rf
 WFLAGS = -Wall
-LOG = >> build.log
+LOG = 1>> build.log
 SRC = main.c
 OBJ = main.o
 PERC = persons.c
@@ -25,7 +25,7 @@ STRO = structs.o
 rebuild: clean build
 build: $(PROJECT)
 	@date $(LOG) \
-	&& echo "Se ejecuta el programa." $(LOG) \
+	&& echo "Se ejecuta el programa.\n" $(LOG) \
 	&& ./$(DEBUGDIR)$^
 $(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(PERO) $(OBJDIR)$(OBJ)
 	@$(CC) $(WFLAGS) $^ -o $(DEBUGDIR)$@

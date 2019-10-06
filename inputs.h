@@ -5,6 +5,8 @@
 #include <limits.h>
 #include "arrays.h"
 
+#define START_MESSAGE "--> UTN FRA Students Base C Library <--"
+#define EXIT_MESSAGE "Thanks for using this library!\nFork me on https://github.com/utnfrastudents/base-practica-c"
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
 #define YES 'S' /**< Respuesta SI por teclado. >*/
 #define NO 'N' /**< Respuesta NO por teclado. >*/
