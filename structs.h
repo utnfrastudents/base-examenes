@@ -17,11 +17,13 @@
 #define MONTH_MAX 12 /**< Mes maximo de cada anio. >*/
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
-#define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de Personas. >*/
+#define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de tipo de Personas. >*/
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
+#define ENTITIES_MAX 20 /**< Cantidad maxima en un arreglo de tipo Entidad. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
+#define HARDCODE TRUE /**< Indicador de harcoding para propositos de testeo. >*/
 
 /*! \struct sDate
  * \brief Tipo de Dato generico para almacenar una Fecha.
@@ -49,6 +51,7 @@ typedef struct
 {
     int idEntity; /**< Campo ID de una Entidad. >*/
     char description[ENTITY_NAME_MAX]; /**< Descripcion de la Entidad. >*/
+    int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sEntity;
 
 /*! \struct sPerson

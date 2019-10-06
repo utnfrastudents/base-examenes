@@ -12,6 +12,9 @@ OBJ = main.o
 PERC = persons.c
 PERH = persons.h
 PERO = persons.o
+ENTC = entities.c
+ENTH = entities.h
+ENTO = entities.o
 MENC = menu.c
 MENH = menu.h
 MENO = menu.o
@@ -30,7 +33,7 @@ build: $(PROJECT)
 	@date $(LOG) \
 	&& echo "Se ejecuta el programa.\n" $(LOG) \
 	&& ./$(DEBUGDIR)$^
-$(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(MENO) $(OBJDIR)$(PERO) $(OBJDIR)$(OBJ)
+$(PROJECT): $(OBJDIR)$(STRO) $(OBJDIR)$(ARRO) $(OBJDIR)$(INPO) $(OBJDIR)$(MENO) $(OBJDIR)$(ENTO) $(OBJDIR)$(PERO) $(OBJDIR)$(OBJ)
 	@$(CC) $(WFLAGS) $^ -o $(DEBUGDIR)$@
 $(OBJDIR)$(OBJ): $(PERH) $(SRC)
 	@cd $(OBJDIR) \
@@ -40,6 +43,10 @@ $(OBJDIR)$(PERO): $(PERC)
 	@cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^ \
 	&& cd $(UPDIR) && echo "Se compila a codigo objeto persons.c" $(LOG)
+$(OBJDIR)$(ENTO): $(ENTC)
+	@cd $(OBJDIR) \
+	&& $(CC) $(CFLAGS) $(UPDIR)$^ \
+	&& cd $(UPDIR) && echo "Se compila a codigo objeto entity.c" $(LOG)
 $(OBJDIR)$(MENO): $(MENC)
 	@cd $(OBJDIR) \
 	&& $(CC) $(CFLAGS) $(UPDIR)$^ \

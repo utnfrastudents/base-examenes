@@ -1,5 +1,12 @@
 #include "persons.h"
 
+int persons_getNewId(void)
+{
+    static int idPerson = ID_INIT_PERSON;
+    idPerson++;
+    return idPerson;
+}
+
 int persons_init(sPerson list[], int length)
 {
     int returnValue = ERROR;
@@ -19,13 +26,6 @@ int persons_init(sPerson list[], int length)
     }
 
     return returnValue;
-}
-
-int persons_getNewId(void)
-{
-    static int idPerson = ID_INIT_PERSON;
-    idPerson++;
-    return idPerson;
 }
 
 int persons_getEmptyIndex(sPerson list[], int length)

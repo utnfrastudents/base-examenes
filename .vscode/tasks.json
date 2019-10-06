@@ -9,8 +9,9 @@
                 "bin/Debug/base-practica-c",
                 "structs.c",
                 "arrays.c",
-                "input.c",
+                "inputs.c",
                 "menu.c",
+                "entities.c",
                 "persons.c",
                 "main.c"
             ],
@@ -31,8 +32,9 @@
                 "bin/Debug/base-practica-c.exe",
                 "structs.c",
                 "arrays.c",
-                "input.c",
+                "inputs.c",
                 "menu.c",
+                "entities.c",
                 "persons.c",
                 "main.c"
             ],

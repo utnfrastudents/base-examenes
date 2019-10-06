@@ -4,7 +4,16 @@
 #define ID_INIT_PERSON 1000 /**< Valor inicial de un ID de tipo Persona. >*/
 #define ERROR_MESSAGE "Error, intente nuevamente: " /**< Mensaje de solicitud de error al validar un dato incorrecto. >*/
 
-#include "menu.h"
+#include "entities.h"
+
+/** \brief Funcion para generar un nuevo ID de estructura de tipo Persona.
+ *
+ * \param void No requiere parametros.
+ * \return int
+ *      Nuevo ID incremental para cada ID de tipo Persona.
+ *
+ */
+int persons_getNewId(void);
 
 /** \brief Funcion que blanquea todas las posiciones de un array de Personas
  *          colocando la bandera isEmpty en TRUE.
@@ -17,15 +26,6 @@
  *
  */
 int persons_init(sPerson list[], int length);
-
-/** \brief Funcion para generar un nuevo ID de estructura de tipo Persona.
- *
- * \param void No requiere parametros.
- * \return int
- *      Nuevo ID incremental para cada ID de tipo Persona.
- *
- */
-int persons_getNewId(void);
 
 /** \brief Funcion que obtiene el primer indice vacio de un arreglo de tipo Personas.
  * 

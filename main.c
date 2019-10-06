@@ -22,8 +22,15 @@ int main()
 
     sPerson persons[PERSONS_MAX];
 
-    if(!persons_init(persons, PERSONS_MAX))
+    sEntity entities[ENTITIES_MAX];
+
+    if(!persons_init(persons, PERSONS_MAX) && !entities_init(entities, ENTITIES_MAX))
     {
+        if(HARDCODE == TRUE)
+        {
+            entities_hardcode(entities, ENTITIES_MAX, 5);
+        }
+
         do
         {
             lifeCycle = menu_main(&optionMainMenu);
