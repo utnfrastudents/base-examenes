@@ -58,13 +58,12 @@ int persons_getById(sPerson list[], int length, int id);
  * \param personsLength int Longitud del arreglo de tipo Persona.
  * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
  * \param entitiesLength int Longitud del arreglo de tipo Entidad.
- * \param id int ID del Empleado.
  * \return int
  *      [-1] Si hubo un error en la carga de la Persona en la lista.
  *      [0] Si la carga de la Persona en la lista fue exitosa.
  *
  */
-int person_add(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
+int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
 
 /** \brief Imprime en pantalla el contenido de la lista del tipo basado en Personas.
  *

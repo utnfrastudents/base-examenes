@@ -105,7 +105,7 @@ int persons_selection(char message[], char eMessage[], sPerson personsList[], in
     return returnValue;
 }
 
-int person_add(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength)
+int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength)
 {
     int returnValue = ERROR;
     int newId;

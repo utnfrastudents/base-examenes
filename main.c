@@ -44,6 +44,10 @@ int main()
             switch (optionMainMenu)
             {
                 case 1:
+                    if(!persons_addNew(persons, PERSONS_MAX, entities, ENTITIES_MAX))
+                    {
+                        printf("Persona agregada con exito.\n");
+                    }
                     break;
                 case 2:
                     do
@@ -68,6 +72,11 @@ int main()
                 case 3:
                     break;
                 case 4:
+                    inputs_clearScreen();
+                    if(persons_printList(persons, PERSONS_MAX, entities, ENTITIES_MAX) == 0)
+                    {
+                        printf("No hay Personas en el listado.\n");
+                    }
                     break;
             }
 
