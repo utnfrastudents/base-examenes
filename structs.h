@@ -133,4 +133,30 @@ int structs_dateCompare(sDate date1, sDate date2);
  */
 int structs_swapDate(sDate* date1, sDate* date2);
 
+/** \brief Funcion que compara dos estructuras de tipo Persona
+ *      por sus ID que son unicos.
+ * 
+ * \param person1 sPerson Tipo de Dato de Persona.
+ * \param person2 sPerson Tipo de Dato de Persona.
+ * \return int
+ *      [0] Se retorna cuando al menos sus ID son iguales.
+ *      [1] Se retorna cuando la Persona 1 tiene ID mayor.
+ *      [-1] Se retorna cuando la Persona 2 tiene ID mayor.
+ *      [-2] Se retorna cuando hubo un error.
+ * 
+ */
+int structs_personsCompare(sPerson person1, sPerson person2);
+
+/** \brief Funcion que intercambia dos estructuras de tipo Persona
+ *      por sus ID que son unicos.
+ * 
+ * \param person1 sPerson* Tipo de Dato de Persona.
+ * \param person2 sPerson* Tipo de Dato de Persona.
+ * \return int
+ *      [0] Si el intercambio fue realizado y verificado con exito.
+ *      [-1] Si hubo un error al hacer el intercambio.
+ * 
+ */
+int structs_swapPersons(sPerson* person1, sPerson* person2);
+
 #endif // STRUCTS_H_INCLUDED
