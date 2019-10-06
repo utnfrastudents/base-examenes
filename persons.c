@@ -27,3 +27,22 @@ int persons_getNewId(void)
     idPerson++;
     return idPerson;
 }
+
+int persons_getEmptyIndex(sPerson list[], int length)
+{
+    int returnValue = -1;
+
+    if(list != NULL && length > 0 && length <= PERSONS_MAX)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            if(list[i].isEmpty == TRUE)
+            {
+                returnValue = i;
+                break;
+            }
+        }
+    }
+
+    return returnValue;
+}

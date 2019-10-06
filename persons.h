@@ -26,4 +26,15 @@ int persons_init(sPerson list[], int length);
  */
 int persons_getNewId(void);
 
+/** \brief Funcion que obtiene el primer indice vacio de un arreglo de tipo Personas.
+ * 
+ * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param length int Longitud del array.
+ * \return int
+ *      [-1] Si no hay ninguna posicion libre del arreglo.
+ *      Indice del arreglo donde se encuentra un lugar vacio.
+ * 
+ */
+int persons_getEmptyIndex(sPerson list[], int length);
+
 #endif // PERSONS_H_INCLUDED
