@@ -1,7 +1,7 @@
 #ifndef PERSONS_H_INCLUDED
 #define PERSONS_H_INCLUDED
 
-#include "inputs.h"
+#include "menu.h"
 
 /** \brief Funcion que blanquea todas las posiciones de un array de Personas
  *          colocando la bandera isEmpty en TRUE.

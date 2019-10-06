@@ -3,11 +3,11 @@
 int initPersons(sPerson list[], int length)
 {
     int returnValue = -1;
-    int i = 0;
+    int i;
 
     if(list != NULL && length > 0 && length <= PERSONS_MAX)
     {
-        for( ; i < length; i++)
+        for(i = 0 ; i < length; i++)
         {
             list[i].isEmpty = TRUE;
         }
