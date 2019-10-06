@@ -1,7 +1,7 @@
 #include "persons.h"
 
 /** \brief Funcion privada que imprime en pantalla
- *      la posicion de un arreglo de tipo de dato basado en Persona.
+ *      un tipo de dato basado en Persona.
  * 
  * \param person sPerson Tipo de Dato basado en Persona.
  * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
@@ -110,6 +110,7 @@ int person_add(sPerson personsList[], int personsLength, sEntity entitiesList[],
     int returnValue = ERROR;
     int newId;
     int emptyIndex;
+    int idEntity;
 
     if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX
         && entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX)
@@ -124,10 +125,16 @@ int person_add(sPerson personsList[], int personsLength, sEntity entitiesList[],
             {
                 personsList[emptyIndex].idPerson = newId;
                 if(!inputs_getString(personsList[emptyIndex].name, "Ingrese el Nombre: ", ERROR_MESSAGE, 1, PERSON_NAME_MAX)
-                    && !inputs_getString(personsList[emptyIndex].lastName, "Ingrese el Apellido: ", ERROR_MESSAGE, 1, PERSON_LASTNAME_MAX))
+                    && !inputs_getString(personsList[emptyIndex].lastName, "Ingrese el Apellido: ", ERROR_MESSAGE, 1, PERSON_LASTNAME_MAX)
+                    && entities_printList(entitiesList, entitiesLength) > 0
+                    && !inputs_getInt(&idEntity, "Seleccione una Entidad: ", ERROR_MESSAGE, ID_INIT_ENTITY + 1, ENTITIES_MAX + ID_INIT_ENTITY))
                 {
-                    personsList[emptyIndex].isEmpty = FALSE;
-                    returnValue = OK;
+                    if(entities_getById(entitiesList, entitiesLength, idEntity) != ERROR)
+                    {
+                        personsList[emptyIndex].idEntity = idEntity;
+                        personsList[emptyIndex].isEmpty = FALSE;
+                        returnValue = OK;
+                    }
                 }
             }
         }

@@ -39,6 +39,15 @@ int entities_init(sEntity list[], int length);
  */
 int entities_getById(sEntity list[], int length, int id);
 
+/** \brief Imprime en pantalla el contenido de la lista del tipo basado en Entidad.
+ *
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int La cantidad de elementos impresos del arreglo del tipo basado en Entidad.
+ *
+ */
+int entities_printList(sEntity entitiesList[], int entitiesLength);
+
 /** \brief Funcion que carga valores de muestra a un arreglo de tipo Entidad
  *      dependiendo de la cantidad definida como parametro.
  *
