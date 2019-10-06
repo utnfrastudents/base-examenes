@@ -37,4 +37,17 @@ int persons_getNewId(void);
  */
 int persons_getEmptyIndex(sPerson list[], int length);
 
+/** \brief Funcion que obtiene el indice del arreglo de tipo Persona
+ *          del ID ingresado como parametro.
+ * 
+ * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param length int Longitud del array.
+ * \param id int Campo ID del Empleado a buscar.
+ * \return int
+ *      [-1] Si no encuentra el ID ingresado.
+ *      Encuentra el indice del Empleado buscado.
+ * 
+ */
+int persons_getById(sPerson list[], int length, int id);
+
 #endif // PERSONS_H_INCLUDED
