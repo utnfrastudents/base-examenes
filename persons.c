@@ -21,9 +21,9 @@ int persons_init(sPerson list[], int length)
     return returnValue;
 }
 
-int getNewEmployeeId(void)
+int persons_getNewId(void)
 {
-    static int idEmployee = ID_INIT_PERSON;
-    idEmployee++;
-    return idEmployee;
+    static int idPerson = ID_INIT_PERSON;
+    idPerson++;
+    return idPerson;
 }
