@@ -65,3 +65,33 @@ int persons_getById(sPerson list[], int length, int id)
 
     return returnValue;
 }
+
+int person_add(sPerson list[], int length)
+{
+    int returnValue = ERROR;
+    int newId;
+    int emptyIndex;
+
+    if(list != NULL && length > 0 && length <= PERSONS_MAX)
+    {
+        newId = persons_getNewId();
+
+        if(persons_getById(list, length, newId) == ERROR)
+        {
+            emptyIndex = persons_getEmptyIndex(list, length);
+
+            if(emptyIndex != ERROR)
+            {
+                list[emptyIndex].idPerson = newId;
+                if(!inputs_getString(list[emptyIndex].name, "Ingrese el Nombre: ", ERROR_MESSAGE, 1, PERSON_NAME_MAX)
+                    && !inputs_getString(list[emptyIndex].lastName, "Ingrese el Apellido: ", ERROR_MESSAGE, 1, PERSON_LASTNAME_MAX))
+                {
+                    list[emptyIndex].isEmpty = FALSE;
+                    returnValue = OK;
+                }
+            }
+        }
+    }
+
+    return returnValue;
+}

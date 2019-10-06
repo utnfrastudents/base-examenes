@@ -2,6 +2,7 @@
 #define PERSONS_H_INCLUDED
 
 #define ID_INIT_PERSON 1000 /**< Valor inicial de un ID de tipo Persona. >*/
+#define ERROR_MESSAGE "Error, intente nuevamente: " /**< Mensaje de solicitud de error al validar un dato incorrecto. >*/
 
 #include "menu.h"
 
@@ -49,5 +50,18 @@ int persons_getEmptyIndex(sPerson list[], int length);
  * 
  */
 int persons_getById(sPerson list[], int length, int id);
+
+/** \brief Funcion que agrega una Persona
+ *      en el primer lugar vacio de la lista ingresada.
+ * 
+ * \param list[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param length int Longitud del array.
+ * \param id int ID del Empleado.
+ * \return int
+ *      [-1] Si hubo un error en la carga de la Persona en la lista.
+ *      [0] Si la carga de la Persona en la lista fue exitosa.
+ *
+ */
+int person_add(sPerson list[], int length);
 
 #endif // PERSONS_H_INCLUDED
