@@ -143,6 +143,28 @@ int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesLis
     return returnValue;
 }
 
+int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength)
+{
+    int returnValue = ERROR;
+
+    if(entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX
+        && person.isEmpty == FALSE)
+    {
+        printf("+======+======================+======================+======================+\n");
+        printf("|  ID  |        Nombre        |       Apellido       |        Entidad       |\n");
+        printf("+======+======================+======================+======================+\n");
+        
+        if(!printPerson(person, entitiesList, entitiesLength))
+        {
+            printf("+------+---------------+---------------+-------------+----------------------------+\n");
+
+            returnValue = OK;
+        }
+    }
+
+    return returnValue;
+}
+
 int persons_printList(sPerson personsList[], int personsLenght, sEntity entitiesList[], int entitiesLength)
 {
     int itemsCounter = 0;

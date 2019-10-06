@@ -65,6 +65,18 @@ int persons_getById(sPerson list[], int length, int id);
  */
 int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
 
+/** \brief Imprime en pantalla un tipo de dato basado en Persona.
+ * 
+ * \param person sPerson Tipo de Dato basado en Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int
+ *      [-1] Si hubo un error en la impresion de los datos de la Persona.
+ *      [0] Si la impresion de la Persona fue exitosa.
+ * 
+ */
+int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength);
+
 /** \brief Imprime en pantalla el contenido de la lista del tipo basado en Personas.
  *
  * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
