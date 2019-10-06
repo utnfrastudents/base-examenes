@@ -5,7 +5,9 @@
 #include <limits.h>
 #include "arrays.h"
 
+/**< Mensaje a mostrar en funcion de inicio previo a la funcion principal. >*/
 #define START_MESSAGE "--> UTN FRA Students Base C Library <--"
+/**< Mensaje a mostrar en funcion de salida posterior a la funcion principal. >*/
 #define EXIT_MESSAGE "Thanks for using this library!\nFork me on https://github.com/utnfrastudents/base-practica-c"
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
 #define YES 'S' /**< Respuesta SI por teclado. >*/

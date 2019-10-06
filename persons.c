@@ -1,8 +1,8 @@
 #include "persons.h"
 
-int initPersons(sPerson list[], int length)
+int persons_init(sPerson list[], int length)
 {
-    int returnValue = -1;
+    int returnValue = ERROR;
     int i;
 
     if(list != NULL && length > 0 && length <= PERSONS_MAX)
@@ -14,7 +14,7 @@ int initPersons(sPerson list[], int length)
 
         if(i == length)
         {
-            returnValue = 0;
+            returnValue = OK;
         }
     }
 

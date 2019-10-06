@@ -16,8 +16,27 @@
 
 int main()
 {
-    inputs_clearScreen();
-    inputs_pauseScreen("Hola Mundo...");
+    int lifeCycle; /**< Indicador del ciclo de vida de cada menu. >*/
+    int optionMainMenu; /**< Opcion elegida por el usuario del menu principal. >*/
+
+    sPerson persons[PERSONS_MAX];
+
+    if(!persons_init(persons, PERSONS_MAX))
+    {
+        do
+        {
+            lifeCycle = menu_main(&optionMainMenu);
+
+            if(optionMainMenu == MAIN_MAX || optionMainMenu == ERROR)
+            {
+                inputs_pauseScreen(QUIT_MESSAGE);
+                break;
+            }
+
+            inputs_pauseScreen(CONTINUE_MESSAGE);
+        } while (!lifeCycle);
+        
+    }
 
     return 0;
 }

@@ -6,7 +6,8 @@
 
 #define TRUE 1 /**< Valor booleano de verdadero. >*/
 #define FALSE 0 /**< Valor booleano de falso. >*/
-#define DEBUG_MODE TRUE /**< Opcion para hacer uso del hardcoding y pausar para ver errores de compilacion. >*/
+#define ERROR -1 /**< Opcion de retorno de error. >*/
+#define OK 0 /**< Opcion de retorno OK. >*/
 #define DAY_MIN 1 /**< Dia minimo de cada mes. >*/
 #define DAY_28 28 /**< Dia maximo de febrero de anio no bisiesto. >*/
 #define DAY_29 29 /**< Dia maximo de febrero de anio bisiesto. >*/
@@ -17,6 +18,7 @@
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
 #define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de Personas. >*/
+#define PERSON_STRUCT "Persona" /**< Aplicacion de la estructura. >*/
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/

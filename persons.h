@@ -13,6 +13,6 @@
  *      [0] Si la inicializacion de todas sus posiciones fue realizada con exito.
  *
  */
-int initPersons(sPerson list[], int length);
+int persons_init(sPerson list[], int length);
 
 #endif // PERSONS_H_INCLUDED
