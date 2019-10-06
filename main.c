@@ -18,6 +18,7 @@ int main()
 {
     int lifeCycle; /**< Indicador del ciclo de vida de cada menu. >*/
     int optionMainMenu; /**< Opcion elegida por el usuario del menu principal. >*/
+    int optionUpdateMenu; /**< Opcion elegida por el usuario para el menu de modificacion. >*/
 
     sPerson persons[PERSONS_MAX];
 
@@ -33,10 +34,43 @@ int main()
                 break;
             }
 
+            switch (optionMainMenu)
+            {
+                case 1:
+                    break;
+                case 2:
+                    do
+                    {
+                        lifeCycle = menu_update(&optionUpdateMenu);
+
+                        if(optionUpdateMenu == UPDATE_MAX || optionUpdateMenu == ERROR)
+                        {
+                            break;
+                        }
+
+                        switch (optionUpdateMenu)
+                        {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                        }
+                    inputs_pauseScreen(CONTINUE_MESSAGE);
+                    } while (!lifeCycle);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+
             inputs_pauseScreen(CONTINUE_MESSAGE);
         } while (!lifeCycle);
-        
+    }
+    else
+    {
+        inputs_pauseScreen("Error de inicialiacion de estructuras.\n");
     }
 
-    return 0;
+    return OK;
 }

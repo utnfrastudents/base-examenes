@@ -27,3 +27,29 @@ int menu_main(int* option)
 
     return returnValue;
 }
+
+int menu_update(int* option)
+{
+    int returnValue = ERROR;
+    char structName[PERSONS_MAX];
+
+    strcpy(structName, PERSON_STRUCT);
+
+    inputs_clearScreen();
+
+    printf("=======================================================\n");
+    printf("                MODIFICAR %s\n", arrays_stringToUppercase(structName, PERSON_NAME_MAX));
+    printf("=======================================================\n");
+    printf("    1 - Modificar el Nombre\n");
+    printf("    2 - Modificar el Apellido\n");
+    printf("    3 - Volver al menu principal\n");
+    printf("=======================================================\n");
+
+    if(!inputs_getInt(option, "Elija una opcion del menu: ",
+        "Opcion incorrecta, ingrese nuevamente: ", OPTION_MIN, UPDATE_MAX))
+    {
+        returnValue = OK;
+    }
+
+    return returnValue;
+}

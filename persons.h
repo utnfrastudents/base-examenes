@@ -1,6 +1,8 @@
 #ifndef PERSONS_H_INCLUDED
 #define PERSONS_H_INCLUDED
 
+#define ID_INIT_PERSON 1000 /**< Valor inicial de un ID de tipo Persona. >*/
+
 #include "menu.h"
 
 /** \brief Funcion que blanquea todas las posiciones de un array de Personas
@@ -14,5 +16,14 @@
  *
  */
 int persons_init(sPerson list[], int length);
+
+/** \brief Funcion para generar un nuevo ID de estructura de tipo Persona.
+ *
+ * \param void No requiere parametros.
+ * \return int
+ *      Nuevo ID incremental para cada ID de tipo Persona.
+ *
+ */
+int persons_getNewId(void);
 
 #endif // PERSONS_H_INCLUDED

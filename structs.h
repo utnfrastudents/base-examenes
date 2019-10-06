@@ -18,7 +18,6 @@
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
 #define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de Personas. >*/
-#define PERSON_STRUCT "Persona" /**< Aplicacion de la estructura. >*/
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/

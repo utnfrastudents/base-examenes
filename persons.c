@@ -20,3 +20,10 @@ int persons_init(sPerson list[], int length)
 
     return returnValue;
 }
+
+int getNewEmployeeId(void)
+{
+    static int idEmployee = ID_INIT_PERSON;
+    idEmployee++;
+    return idEmployee;
+}

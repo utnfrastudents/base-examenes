@@ -8,7 +8,7 @@
 /**< Mensaje a mostrar en funcion de inicio previo a la funcion principal. >*/
 #define START_MESSAGE "--> UTN FRA Students Base C Library <--"
 /**< Mensaje a mostrar en funcion de salida posterior a la funcion principal. >*/
-#define EXIT_MESSAGE "Thanks for using this library!\nFork me on https://github.com/utnfrastudents/base-practica-c"
+#define EXIT_MESSAGE "Thanks for using UTN FRA Students C Library!\nFork me on https://github.com/utnfrastudents/base-practica-c"
 #define ENTER_CHARACTER '\n' /**< Caracter de tecla enter por teclado. >*/
 #define YES 'S' /**< Respuesta SI por teclado. >*/
 #define NO 'N' /**< Respuesta NO por teclado. >*/
