@@ -105,6 +105,21 @@ int persons_modify(sPerson personsList[], int personsLength, sEntity entitiesLis
  */
 int persons_remove(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
 
+/** \brief Funcion que ordena un arreglo de tipo de dato basado en Personas,
+ *      por Entidad y por Apellido, ya sea de forma Ascendente o Descendente.
+ * 
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \param order int [ASC] Orden Ascendente - [DESC] orden Descendente.
+ * \return int
+ *      [-1] Si hubo un error para ordenar a las Personas de la lista.
+ *      [0] Si el ordenamiento de las Personas de la lista fue exitosa.
+ *
+ */
+int persons_sortByEntityAndLastName(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength, int order);
+
 /** \brief Imprime en pantalla un tipo de dato basado en Persona.
  * 
  * \param person sPerson Tipo de Dato basado en Persona.

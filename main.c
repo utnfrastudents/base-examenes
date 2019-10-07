@@ -64,7 +64,8 @@ int main()
                     break;
                 case 4:
                     inputs_clearScreen();
-                    if(persons_printList(persons, PERSONS_MAX, entities, ENTITIES_MAX) == 0)
+                    if(persons_sortByEntityAndLastName(persons, PERSONS_MAX, entities, ENTITIES_MAX, ASC) == ERROR
+                        || persons_printList(persons, PERSONS_MAX, entities, ENTITIES_MAX) == 0)
                     {
                         printf("No hay Personas activas en el listado.\n");
                     }

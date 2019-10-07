@@ -23,6 +23,8 @@
 #define ENTITIES_MAX 20 /**< Cantidad maxima en un arreglo de tipo Entidad. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
+#define ASC 1 /**< Metodo para ordenar de forma Ascendente. >*/
+#define DESC 0 /**< Metodo para ordenar de forma Descendente. >*/
 #define HARDCODE TRUE /**< Indicador de harcoding para propositos de testeo. >*/
 
 /*! \struct sDate

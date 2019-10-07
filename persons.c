@@ -258,6 +258,60 @@ int persons_remove(sPerson personsList[], int personsLength, sEntity entitiesLis
     return returnValue;
 }
 
+int persons_sortByEntityAndLastName(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength, int order)
+{
+    int returnValue = ERROR;
+    int index1;
+    int index2;
+
+    if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX
+        && entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX
+        && (order == ASC || order == DESC))
+    {
+        for(int i= 0; i < personsLength-1 ; i++)
+        {
+            for(int j = i+1; j < personsLength; j++)
+            {
+                index1 = entities_getById(entitiesList, entitiesLength, personsList[i].idEntity);
+                index2 = entities_getById(entitiesList, entitiesLength, personsList[j].idEntity);
+
+                if(index1 != ERROR && index2 != ERROR)
+                {
+                    if((strcmp(arrays_stringToCamelCase(entitiesList[index1].description, ENTITY_NAME_MAX),
+                            arrays_stringToCamelCase(entitiesList[index2].description, ENTITY_NAME_MAX)) > 0 && order == ASC)
+                        || (strcmp(arrays_stringToCamelCase(entitiesList[index1].description, ENTITY_NAME_MAX),
+                            arrays_stringToCamelCase(entitiesList[index2].description, ENTITY_NAME_MAX)) < 0 && order == DESC))
+                    {
+                        if(!structs_swapPersons(&personsList[i], &personsList[j]))
+                        {
+                            returnValue = OK;
+                        }
+                    }
+                    else
+                    {
+                        if(strcmp(arrays_stringToCamelCase(entitiesList[index1].description, ENTITY_NAME_MAX),
+                            arrays_stringToCamelCase(entitiesList[index2].description, ENTITY_NAME_MAX)) == 0)
+                        {
+                            if((strcmp(arrays_stringToCamelCase(personsList[i].lastName, PERSON_LASTNAME_MAX),
+                                    arrays_stringToCamelCase(personsList[j].lastName, PERSON_LASTNAME_MAX)) > 0 && order == ASC)
+                                || ((strcmp(arrays_stringToCamelCase(personsList[i].lastName, PERSON_LASTNAME_MAX),
+                                    arrays_stringToCamelCase(personsList[j].lastName, PERSON_LASTNAME_MAX)) < 0 && order == DESC)))
+                            {
+                                if(!structs_swapPersons(&personsList[i], &personsList[j]))
+                                {
+                                    returnValue = OK;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return returnValue;
+}
+
 int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength)
 {
     int returnValue = ERROR;
@@ -333,9 +387,9 @@ void persons_hardcode(sPerson personsList[], int personsLength)
         {persons_getNewId(), "Ricardo", "Darin", 21, FALSE},
         {persons_getNewId(), "Moria", "Casan", 13, FALSE},
         {persons_getNewId(), "Marley", "Wieber", 22, FALSE},
-        {persons_getNewId(), "Mirtha", "Legrand", 17, FALSE},
+        {persons_getNewId(), "Mirtha", "Legrand", 14, FALSE},
         {persons_getNewId(), "Veronica", "Lozano", 26, FALSE},
-        {persons_getNewId(), "Pampita", "Ardohain", 13, FALSE}
+        {persons_getNewId(), "Pampita", "Ardohain", 14, FALSE}
     };
 
     if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX)
