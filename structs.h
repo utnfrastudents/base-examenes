@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TRUE 1 /**< Valor booleano de verdadero. >*/
 #define FALSE 0 /**< Valor booleano de falso. >*/
@@ -23,6 +24,7 @@
 #define ENTITIES_MAX 20 /**< Cantidad maxima en un arreglo de tipo Entidad. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
+#define OBJECT_TYPE_MAX 21 /**< Longitud maxima de la descripcion de un tipo de Objeto. >*/
 #define ASC 1 /**< Metodo para ordenar de forma Ascendente. >*/
 #define DESC 0 /**< Metodo para ordenar de forma Descendente. >*/
 #define HARDCODE TRUE /**< Indicador de harcoding para propositos de testeo. >*/
@@ -99,6 +101,7 @@ typedef struct
     char description[OBJECT_NAME_MAX]; /**< Descripcion del Objeto.. >*/
     int idPerson;  /**< Campo ID de una Persona. >*/
     eObjectsType type; /**< Tipo del Objeto. >*/
+    int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sObject;
 
 /*! \struct sPersonsObjets
@@ -201,5 +204,15 @@ int structs_entitiesCompare(sEntity entity1, sEntity entity2);
  *
  */
 int structs_swapEntities(sEntity* entity1, sEntity* entity2);
+
+/** \brief Funcion que obtiene la cadena de caracteres
+ *      de un tipo de dato basado en un tipo de Objeto.
+ * 
+ * \param object sObject Tipo de Dato basado en Objeto.
+ * \return char*
+ *      Cadena de caracteres del tipo de dato basado en el tipo de Objeto.
+ * 
+ */
+char* structs_getObjectType(sObject object);
 
 #endif // STRUCTS_H_INCLUDED

@@ -1,7 +1,6 @@
 #ifndef ARRAYS_H_INCLUDED
 #define ARRAYS_H_INCLUDED
 
-#include <string.h>
 #include <ctype.h>
 #include <float.h>
 #include "structs.h"

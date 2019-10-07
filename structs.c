@@ -255,3 +255,27 @@ int structs_swapEntities(sEntity* entity1, sEntity* entity2)
 
     return returnValue;
 }
+
+char* structs_getObjectType(sObject object)
+{
+    char objectString[OBJECT_TYPE_MAX] = "NULL";
+    char* pObjectString = objectString;
+
+    if(object.isEmpty == FALSE)
+    {
+        switch (object.type)
+        {
+            case Tipo1:
+                strcpy(pObjectString, "Tipo 1");
+                break;
+            case Tipo2:
+                strcpy(pObjectString, "Tipo 2");
+                break;
+            case Tipo3:
+                strcpy(pObjectString, "Tipo 3");
+                break;
+        }
+    }
+
+    return pObjectString;
+}
