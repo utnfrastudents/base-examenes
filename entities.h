@@ -39,6 +39,19 @@ int entities_init(sEntity list[], int length);
  */
 int entities_getById(sEntity list[], int length, int id);
 
+/** \brief Funcion para seleccionar una Entidad existente en un arreglo.
+ *
+ * \param message[] char Es el mensaje a ser mostrado.
+ * \param eMessage[] char Es el mensaje a ser mostrado en caso de error.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int
+ *      [-1] Si hubo un error en la seleccion de la Entidad en la lista.
+ *      ID de la Entidad elegida.
+ *
+ */
+int entities_selection(char message[], char eMessage[], sEntity entitiesList[], int entitiesLength);
+
 /** \brief Imprime en pantalla el contenido de la lista del tipo basado en Entidad.
  *
  * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.

@@ -51,8 +51,22 @@ int persons_getEmptyIndex(sPerson list[], int length);
  */
 int persons_getById(sPerson list[], int length, int id);
 
-/** \brief Funcion que agrega una Persona
- *      en el primer lugar vacio de la lista ingresada.
+/** \brief Funcion para seleccionar una Persona existente en un arreglo.
+ *
+ * \param message[] char Es el mensaje a ser mostrado.
+ * \param eMessage[] char Es el mensaje a ser mostrado en caso de error.
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int
+ *      [-1] Si hubo un error en la selecion de la Persona en la lista.
+ *      ID de la Persona elegida.
+ *
+ */
+int persons_selection(char message[], char eMessage[], sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
+
+/** \brief Funcion que agrega una Persona en el primer lugar vacio de la lista ingresada.
  * 
  * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
  * \param personsLength int Longitud del arreglo de tipo Persona.
@@ -64,6 +78,19 @@ int persons_getById(sPerson list[], int length, int id);
  *
  */
 int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
+
+/** \brief Funcion que modifica una Persona con los nuevos valores ingresados por el usuario.
+ * 
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int
+ *      [-1] Si hubo un error en la modificacion de la Persona en la lista.
+ *      [0] Si la modificacion de la Persona en la lista fue exitosa.
+ *
+ */
+int persons_modify(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
 
 /** \brief Imprime en pantalla un tipo de dato basado en Persona.
  * 

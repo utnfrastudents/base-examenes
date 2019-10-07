@@ -143,6 +143,71 @@ int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesLis
     return returnValue;
 }
 
+int persons_modify(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength)
+{
+    int returnValue = ERROR;
+    int lifeCycle; /**< Indicador del ciclo de vida de cada menu. >*/
+    int optionUpdateMenu; /**< Opcion elegida por el usuario para el menu de modificacion. >*/
+    int id; /**< ID del dato buscado. >*/
+    int index; /**< Indice del dato buscado. >*/
+    int idEntity; /**< ID de Entidad a modificar. >*/
+
+    if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX
+        && entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX)
+    {
+        id = persons_selection("Indique el ID de la Persona a modificar: ", ERROR_MESSAGE,
+            personsList, personsLength, entitiesList, entitiesLength);
+        index = persons_getById(personsList, personsLength, id);
+
+        if(id != ERROR && index != ERROR)
+        {
+            inputs_clearScreen();
+            do
+            {
+                lifeCycle = menu_update(&optionUpdateMenu);
+
+                if(optionUpdateMenu == UPDATE_MAX || optionUpdateMenu == ERROR)
+                {
+                    break;
+                }
+
+                switch (optionUpdateMenu)
+                {
+                    case 1:
+                        if(!inputs_getString(personsList[index].name, "Ingrese el nuevo Nombre: ",
+                            ERROR_MESSAGE, 1, PERSON_NAME_MAX))
+                        {
+                            returnValue = OK;
+                        }
+                        break;
+                    case 2:
+                        if(!inputs_getString(personsList[index].lastName, "Ingrese el nuevo Apellido: ",
+                            ERROR_MESSAGE, 1, PERSON_NAME_MAX))
+                        {
+                            returnValue = OK;
+                        }
+                        break;
+                    case 3:
+                        idEntity = entities_selection("Seleccione la nueva Entidad: ",
+                            ERROR_MESSAGE, entitiesList, entitiesLength);
+
+                        if(idEntity != ERROR
+                            && entities_getById(entitiesList, entitiesLength, idEntity) != ERROR)
+                        {
+                            personsList[index].idEntity = idEntity;
+                            returnValue = OK;
+                        }
+                        break;
+                }
+
+            inputs_pauseScreen(CONTINUE_MESSAGE);
+            } while (!lifeCycle);
+        }
+    }
+
+    return returnValue;
+}
+
 int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength)
 {
     int returnValue = ERROR;

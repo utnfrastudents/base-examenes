@@ -58,6 +58,32 @@ int entities_getById(sEntity list[], int length, int id)
     return returnValue;
 }
 
+int entities_selection(char message[], char eMessage[], sEntity entitiesList[], int entitiesLength)
+{
+    int returnValue = ERROR;
+    int auxId = 0;
+    int auxIndex = 0;
+
+    if(message != NULL && eMessage != NULL && entitiesList != NULL
+        && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX
+        && entities_printList(entitiesList, entitiesLength) > 0
+        && !inputs_getInt(&auxId, message, eMessage, ID_INIT_ENTITY + 1, ENTITIES_MAX + ID_INIT_ENTITY))
+    {
+        auxIndex = entities_getById(entitiesList, entitiesLength, auxId);
+
+        if(auxIndex != ERROR)
+        {
+            returnValue = auxId;
+        }
+        else
+        {
+            printf("No se encuentra el ID de la Entidad en el sistema.\n");
+        }
+    }
+
+    return returnValue;
+}
+
 int entities_printList(sEntity entitiesList[], int entitiesLength)
 {
     int itemsCounter = 0;

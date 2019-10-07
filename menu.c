@@ -31,18 +31,21 @@ int menu_main(int* option)
 int menu_update(int* option)
 {
     int returnValue = ERROR;
-    char structName[PERSONS_MAX];
+    char structPersonName[PERSONS_MAX];
+    char structEntityName[ENTITY_NAME_MAX];
 
-    strcpy(structName, PERSON_STRUCT);
+    strcpy(structPersonName, PERSON_STRUCT);
+    strcpy(structEntityName, ENTITY_STRUCT);
 
     inputs_clearScreen();
 
     printf("=======================================================\n");
-    printf("                MODIFICAR %s\n", arrays_stringToUppercase(structName, PERSON_NAME_MAX));
+    printf("                MODIFICAR %s\n", arrays_stringToUppercase(structPersonName, PERSON_NAME_MAX));
     printf("=======================================================\n");
     printf("    1 - Modificar el Nombre\n");
     printf("    2 - Modificar el Apellido\n");
-    printf("    3 - Volver al menu principal\n");
+    printf("    3 - Modificar la %s\n", arrays_stringToCamelCase(structEntityName, ENTITY_NAME_MAX));
+    printf("    4 - Volver al menu principal\n");
     printf("=======================================================\n");
 
     if(!inputs_getInt(option, "Elija una opcion del menu: ",

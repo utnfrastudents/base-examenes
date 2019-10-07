@@ -18,11 +18,9 @@ int main()
 {
     int lifeCycle; /**< Indicador del ciclo de vida de cada menu. >*/
     int optionMainMenu; /**< Opcion elegida por el usuario del menu principal. >*/
-    int optionUpdateMenu; /**< Opcion elegida por el usuario para el menu de modificacion. >*/
 
-    sPerson persons[PERSONS_MAX];
-
-    sEntity entities[ENTITIES_MAX];
+    sPerson persons[PERSONS_MAX]; /**< Arreglo de tipos de datos basados en Personas. >*/
+    sEntity entities[ENTITIES_MAX]; /**< Arreglo de tipos de datos basados en Personas. >*/
 
     if(!persons_init(persons, PERSONS_MAX) && !entities_init(entities, ENTITIES_MAX))
     {
@@ -50,24 +48,11 @@ int main()
                     }
                     break;
                 case 2:
-                    do
+                    inputs_clearScreen();
+                    if(!persons_modify(persons, PERSONS_MAX, entities, ENTITIES_MAX))
                     {
-                        lifeCycle = menu_update(&optionUpdateMenu);
-
-                        if(optionUpdateMenu == UPDATE_MAX || optionUpdateMenu == ERROR)
-                        {
-                            break;
-                        }
-
-                        switch (optionUpdateMenu)
-                        {
-                            case 1:
-                                break;
-                            case 2:
-                                break;
-                        }
-                    inputs_pauseScreen(CONTINUE_MESSAGE);
-                    } while (!lifeCycle);
+                        printf("Modicacion realizada con exito.\n");
+                    }
                     break;
                 case 3:
                     break;
