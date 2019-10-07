@@ -128,4 +128,14 @@ int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength);
  */
 int persons_printList(sPerson personsList[], int personsLenght, sEntity entitiesList[], int entitiesLength);
 
+/** \brief Funcion que carga valores de muestra a un arreglo de tipo Personas
+ *      dependiendo de la cantidad definida como parametro.
+ *
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \return void No retorna valores.
+ *
+ */
+void persons_hardcode(sPerson personsList[], int personsLength);
+
 #endif // PERSONS_H_INCLUDED

@@ -26,7 +26,8 @@ int main()
     {
         if(HARDCODE == TRUE)
         {
-            entities_hardcode(entities, ENTITIES_MAX, 5);
+            entities_hardcode(entities, ENTITIES_MAX);
+            persons_hardcode(persons, PERSONS_MAX);
         }
 
         do

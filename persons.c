@@ -1,5 +1,13 @@
 #include "persons.h"
 
+/** \brief Funcion que devuelve una Persona nula.
+ * 
+ * \param void No tiene parametros.
+ * \return void No tiene retorno.
+ * 
+ */
+static sPerson nullPerson(void);
+
 /** \brief Funcion privada que imprime en pantalla
  *      un tipo de dato basado en Persona.
  * 
@@ -29,7 +37,7 @@ int persons_init(sPerson list[], int length)
     {
         for(i = 0 ; i < length; i++)
         {
-            list[i].isEmpty = TRUE;
+            list[i] = nullPerson();
         }
 
         if(i == length)
@@ -263,7 +271,7 @@ int persons_print(sPerson person, sEntity entitiesList[], int entitiesLength)
         
         if(!printPerson(person, entitiesList, entitiesLength))
         {
-            printf("+------+---------------+---------------+-------------+----------------------------+\n");
+            printf("+------+----------------------+----------------------+----------------------+\n");
 
             returnValue = OK;
         }
@@ -313,6 +321,50 @@ int persons_printList(sPerson personsList[], int personsLenght, sEntity entities
     }
 
     return itemsCounter;
+}
+
+void persons_hardcode(sPerson personsList[], int personsLength)
+{
+    int indexHardcodeMax = 7;
+
+    sPerson auxPersons[PERSONS_MAX] = {
+        {persons_getNewId(), "Marcelo", "Tinelli", 15, FALSE},
+        {persons_getNewId(), "Susana", "Gimenez", 14, FALSE},
+        {persons_getNewId(), "Ricardo", "Darin", 21, FALSE},
+        {persons_getNewId(), "Moria", "Casan", 13, FALSE},
+        {persons_getNewId(), "Marley", "Wieber", 22, FALSE},
+        {persons_getNewId(), "Mirtha", "Legrand", 17, FALSE},
+        {persons_getNewId(), "Veronica", "Lozano", 26, FALSE},
+        {persons_getNewId(), "Pampita", "Ardohain", 13, FALSE}
+    };
+
+    if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX)
+    {
+        for (int i = 0; i < personsLength; i++)
+        {
+            if(i <= indexHardcodeMax)
+            {
+                personsList[i] = auxPersons[i];
+            }
+            else
+            {
+                personsList[i] = nullPerson();
+            }
+        }
+    }
+}
+
+static sPerson nullPerson()
+{
+    sPerson aux;
+
+    aux.idPerson = -1;
+    strcpy(aux.name, "NULL");
+    strcpy(aux.lastName, "NULL");
+    aux.idEntity = -1;
+    aux.isEmpty = TRUE;
+
+    return aux;
 }
 
 static int printPerson(sPerson person, sEntity entitiesList[], int entitiesLength)

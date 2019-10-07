@@ -64,12 +64,11 @@ int entities_printList(sEntity entitiesList[], int entitiesLength);
 /** \brief Funcion que carga valores de muestra a un arreglo de tipo Entidad
  *      dependiendo de la cantidad definida como parametro.
  *
- * \param list[] sEntity Direccion de memoria del inicio del arreglo de tipo Entidad.
- * \param length int Longitud del array.
- * \param quantity unt Cantidad de valores a cargar en el arreglo.
+ * \param entitiesList[] sEntity Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del array.
  * \return void No retorna valores.
  *
  */
-void entities_hardcode(sEntity list[], int length, int quantity);
+void entities_hardcode(sEntity entitiesList[], int entitiesLength);
 
 #endif // ENTITY_H_INCLUDED

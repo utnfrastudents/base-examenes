@@ -1,5 +1,13 @@
 #include "entities.h"
 
+/** \brief Funcion que devuelve una Entidad nula.
+ * 
+ * \param void No tiene parametros.
+ * \return void No tiene retorno.
+ * 
+ */
+static sEntity nullEntity();
+
 /** \brief Funcion privada que imprime en pantalla
  *      un tipo de dato basado en Entidad.
  * 
@@ -27,7 +35,7 @@ int entities_init(sEntity list[], int length)
     {
         for(i = 0 ; i < length; i++)
         {
-            list[i].isEmpty = TRUE;
+            list[i] = nullEntity();
         }
 
         if(i == length)
@@ -126,23 +134,58 @@ int entities_printList(sEntity entitiesList[], int entitiesLength)
     return itemsCounter;
 }
 
-void entities_hardcode(sEntity list[], int length, int quantity)
+void entities_hardcode(sEntity entitiesList[], int entitiesLength)
 {
+    int indexHardcodeMax = 19;
+
     sEntity auxEntity[] = {
         {entities_getNewId(), "entidad 1"},
         {entities_getNewId(), "entidad 2"},
         {entities_getNewId(), "entidad 3"},
         {entities_getNewId(), "entidad 4"},
-        {entities_getNewId(), "entidad 5"}
+        {entities_getNewId(), "entidad 5"},
+        {entities_getNewId(), "entidad 6"},
+        {entities_getNewId(), "entidad 7"},
+        {entities_getNewId(), "entidad 8"},
+        {entities_getNewId(), "entidad 9"},
+        {entities_getNewId(), "entidad 10"},
+        {entities_getNewId(), "entidad 11"},
+        {entities_getNewId(), "entidad 12"},
+        {entities_getNewId(), "entidad 13"},
+        {entities_getNewId(), "entidad 14"},
+        {entities_getNewId(), "entidad 15"},
+        {entities_getNewId(), "entidad 16"},
+        {entities_getNewId(), "entidad 17"},
+        {entities_getNewId(), "entidad 18"},
+        {entities_getNewId(), "entidad 19"},
+        {entities_getNewId(), "entidad 20"}
     };
 
-    if(list != NULL && quantity <= ENTITIES_MAX && length >= quantity)
+    if(entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX)
     {
-        for (int i = 0; i < quantity; i++)
+        for (int i = 0; i < entitiesLength; i++)
         {
-            list[i] = auxEntity[i];
+            if(i <= indexHardcodeMax)
+            {
+                entitiesList[i] = auxEntity[i];
+            }
+            else
+            {
+                entitiesList[i] = nullEntity();
+            }
         }
     }
+}
+
+static sEntity nullEntity()
+{
+    sEntity aux;
+
+    aux.idEntity = -1;
+    strcpy(aux.description, "NULL");
+    aux.isEmpty = TRUE;
+
+    return aux;
 }
 
 static int printEntity(sEntity entity)
