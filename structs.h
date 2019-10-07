@@ -164,4 +164,30 @@ int structs_personsCompare(sPerson person1, sPerson person2);
  */
 int structs_swapPersons(sPerson* person1, sPerson* person2);
 
+/** \brief Funcion que compara dos estructuras de tipo Entidad
+ *      por sus ID que son unicos.
+ * 
+ * \param entity1 sEntity Tipo de Dato de Entidad.
+ * \param entity2 sEntity Tipo de Dato de Entidad.
+ * \return int
+ *      [0] Se retorna cuando al menos sus ID son iguales.
+ *      [1] Se retorna cuando la Entidad 1 tiene ID mayor.
+ *      [-1] Se retorna cuando la Entidad 2 tiene ID mayor.
+ *      [-2] Se retorna cuando hubo un error.
+ * 
+ */
+int structs_entitiesCompare(sEntity entity1, sEntity entity2);
+
+/** \brief Funcion que intercambia dos estructuras de tipo Entidad
+ *      por sus ID que son unicos.
+ * 
+ * \param entity1 sEntity* Tipo de Dato de Entidad.
+ * \param entity2 sEntity* Tipo de Dato de Entidad.
+ * \return int
+ *      [0] Si el intercambio fue realizado y verificado con exito.
+ *      [-1] Si hubo un error al hacer el intercambio.
+ * 
+ */
+int structs_swapEntities(sEntity* entity1, sEntity* entity2);
+
 #endif // STRUCTS_H_INCLUDED

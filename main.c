@@ -34,6 +34,7 @@ int main()
         {
             lifeCycle = menu_main(&optionMainMenu);
 
+            /**< Si la opcion elegida es de salida o hubo un error. >*/
             if(optionMainMenu == MAIN_MAX || optionMainMenu == ERROR)
             {
                 inputs_pauseScreen(QUIT_MESSAGE);
@@ -42,7 +43,7 @@ int main()
 
             switch (optionMainMenu)
             {
-                case 1:
+                case 1: // Opcion elegida: Alta de tipo de dato basado en Persona.
                     if(!persons_addNew(persons, PERSONS_MAX, entities, ENTITIES_MAX))
                     {
                         printf("Persona agregada con exito.\n");

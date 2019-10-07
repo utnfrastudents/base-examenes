@@ -134,24 +134,27 @@ int structs_personsCompare(sPerson person1, sPerson person2)
         }
         else
         {
-            /**< Si sus ID son iguales y tienen el mismo estado, como no pueden repetirse se toman como Empleados iguales. >*/
-            if(person1.idPerson == person2.idPerson && person1.isEmpty == person2.isEmpty)
+            if(person1.idPerson == person2.idPerson)
             {
-                compare = 0;
-            }
-            else
-            {
-                /**< Si sus ID son iguales y la persona 2 esta inactiva, como no pueden repetirse se toman como Empleados iguales. >*/
-                if(person1.idPerson == person2.idPerson && person1.isEmpty == FALSE && person2.isEmpty == TRUE)
+                /**< Si sus ID son iguales y tienen el mismo estado, como no pueden repetirse se toman como Personas iguales. >*/
+                if(person1.isEmpty == person2.isEmpty)
                 {
-                    compare = 1;
+                    compare = 0;
                 }
                 else
                 {
-                    /**< Si sus ID son iguales y la persona 1 esta inactiva, como no pueden repetirse se toman como Empleados iguales. >*/
-                    if(person1.idPerson == person2.idPerson && person1.isEmpty == TRUE && person2.isEmpty == FALSE)
+                    /**< Si sus ID son iguales y la Persona 2 esta inactiva, la Persona 1 es mayor. >*/
+                    if(person1.isEmpty == FALSE && person2.isEmpty == TRUE)
                     {
-                        compare = -1;
+                        compare = 1;
+                    }
+                    else
+                    {
+                        /**< Si sus ID son iguales y la Entidad 1 esta inactiva, la Entidad 2 es mayor. >*/
+                        if(person1.isEmpty == TRUE && person2.isEmpty == FALSE)
+                        {
+                            compare = -1;
+                        }
                     }
                 }
             }
@@ -175,6 +178,76 @@ int structs_swapPersons(sPerson* person1, sPerson* person2)
         *person2 = aux1;
 
         if(!structs_personsCompare(*person1, aux2) && !structs_personsCompare(*person2, aux1))
+        {
+            returnValue = OK;
+        }
+    }
+
+    return returnValue;
+}
+
+int structs_entitiesCompare(sEntity entity1, sEntity entity2)
+{
+    int compare = -2;
+
+    /**< Si el ID del primero es menor al ID del segundo, son diferentes y el ID 1 es menor. >*/
+    if(entity1.idEntity < entity2.idEntity)
+    {
+        compare = 1;
+    }
+    else
+    {
+        /**< Si el ID del primero es mayor al ID del segundo, son diferentes y el ID 2 es menor. >*/
+        if(entity1.idEntity > entity2.idEntity)
+        {
+            compare = -1;
+        }
+        else
+        {
+            if(entity1.idEntity == entity2.idEntity)
+            {
+                /**< Si sus ID son iguales y tienen el mismo estado, como no pueden repetirse se toman como Entidades iguales. >*/
+                if(entity1.isEmpty == entity2.isEmpty)
+                {
+                    compare = 0;
+                }
+                else
+                {
+                    /**< Si sus ID son iguales y la Entidad 2 esta inactiva, la Entidad 1 es mayor. >*/
+                    if(entity1.isEmpty == FALSE && entity2.isEmpty == TRUE)
+                    {
+                        compare = 1;
+                    }
+                    else
+                    {
+                        /**< Si sus ID son iguales y la Entidad 1 esta inactiva, la Entidad 2 es mayor. >*/
+                        if(entity1.isEmpty == TRUE && entity2.isEmpty == FALSE)
+                        {
+                            compare = -1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return compare;
+}
+
+int structs_swapEntities(sEntity* entity1, sEntity* entity2)
+{
+    int returnValue = ERROR;
+    sEntity aux1;
+    sEntity aux2;
+
+    if(entity1->isEmpty == FALSE && entity2->isEmpty == FALSE)
+    {
+        aux1 = *entity1;
+        aux2 = *entity2;
+        *entity1 = *entity2;
+        *entity2 = aux1;
+
+        if(!structs_entitiesCompare(*entity1, aux2) && !structs_entitiesCompare(*entity2, aux1))
         {
             returnValue = OK;
         }
