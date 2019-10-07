@@ -13,6 +13,7 @@
                 "menu.c",
                 "entities.c",
                 "persons.c",
+                "objects.c",
                 "main.c"
             ],
             "problemMatcher": [
@@ -36,6 +37,7 @@
                 "menu.c",
                 "entities.c",
                 "persons.c",
+                "objects.c",
                 "main.c"
             ],
             "problemMatcher": []

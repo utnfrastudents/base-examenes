@@ -12,7 +12,7 @@
  *      Christian Grimberg
  *
  ************************************************************************/
-#include "persons.h"
+#include "objects.h"
 
 int main()
 {
