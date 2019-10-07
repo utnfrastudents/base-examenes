@@ -120,24 +120,40 @@ int structs_personsCompare(sPerson person1, sPerson person2)
 {
     int compare = -2;
 
-    /**< Si sus ID son iguales, como no pueden repetirse se toman como Empleados iguales. >*/
-    if(person1.idPerson == person2.idPerson)
+    /**< Si el ID del primero es menor al ID del segundo, son diferentes y el ID 1 es menor. >*/
+    if(person1.idPerson < person2.idPerson)
     {
-        compare = 0;
+        compare = 1;
     }
     else
     {
-        /**< Si el ID del primero es menor al ID del segundo, son diferentes y el ID 1 es menor. >*/
-        if(person1.idPerson < person2.idPerson)
+        /**< Si el ID del primero es mayor al ID del segundo, son diferentes y el ID 2 es menor. >*/
+        if(person1.idPerson > person2.idPerson)
         {
-            compare = 1;
+            compare = -1;
         }
         else
         {
-            /**< Si el ID del primero es mayor al ID del segundo, son diferentes y el ID 2 es menor. >*/
-            if(person1.idPerson > person2.idPerson)
+            /**< Si sus ID son iguales y tienen el mismo estado, como no pueden repetirse se toman como Empleados iguales. >*/
+            if(person1.idPerson == person2.idPerson && person1.isEmpty == person2.isEmpty)
             {
-                compare = -1;
+                compare = 0;
+            }
+            else
+            {
+                /**< Si sus ID son iguales y la persona 2 esta inactiva, como no pueden repetirse se toman como Empleados iguales. >*/
+                if(person1.idPerson == person2.idPerson && person1.isEmpty == FALSE && person2.isEmpty == TRUE)
+                {
+                    compare = 1;
+                }
+                else
+                {
+                    /**< Si sus ID son iguales y la persona 1 esta inactiva, como no pueden repetirse se toman como Empleados iguales. >*/
+                    if(person1.idPerson == person2.idPerson && person1.isEmpty == TRUE && person2.isEmpty == FALSE)
+                    {
+                        compare = -1;
+                    }
+                }
             }
         }
     }
@@ -151,14 +167,17 @@ int structs_swapPersons(sPerson* person1, sPerson* person2)
     sPerson aux1;
     sPerson aux2;
 
-    aux1 = *person1;
-    aux2 = *person2;
-    *person1 = *person2;
-    *person2 = aux1;
-
-    if(!structs_personsCompare(*person1, aux2) && !structs_personsCompare(*person2, aux1))
+    if(person1->isEmpty == FALSE && person2->isEmpty == FALSE)
     {
-        returnValue = OK;
+        aux1 = *person1;
+        aux2 = *person2;
+        *person1 = *person2;
+        *person2 = aux1;
+
+        if(!structs_personsCompare(*person1, aux2) && !structs_personsCompare(*person2, aux1))
+        {
+            returnValue = OK;
+        }
     }
 
     return returnValue;
