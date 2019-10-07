@@ -99,7 +99,7 @@ int structs_dateCompare(sDate date1, sDate date2)
 
 int structs_swapDate(sDate* date1, sDate* date2)
 {
-    int returnValue = -1;
+    int returnValue = ERROR;
     sDate aux1;
     sDate aux2;
 
@@ -110,7 +110,55 @@ int structs_swapDate(sDate* date1, sDate* date2)
 
     if(!structs_dateCompare(*date1, aux2) && !structs_dateCompare(*date2, aux1))
     {
-        returnValue = 0;
+        returnValue = OK;
+    }
+
+    return returnValue;
+}
+
+int structs_personsCompare(sPerson person1, sPerson person2)
+{
+    int compare = -2;
+
+    /**< Si sus ID son iguales, como no pueden repetirse se toman como Empleados iguales. >*/
+    if(person1.idPerson == person2.idPerson)
+    {
+        compare = 0;
+    }
+    else
+    {
+        /**< Si el ID del primero es menor al ID del segundo, son diferentes y el ID 1 es menor. >*/
+        if(person1.idPerson < person2.idPerson)
+        {
+            compare = 1;
+        }
+        else
+        {
+            /**< Si el ID del primero es mayor al ID del segundo, son diferentes y el ID 2 es menor. >*/
+            if(person1.idPerson > person2.idPerson)
+            {
+                compare = -1;
+            }
+        }
+    }
+
+    return compare;
+}
+
+int structs_swapPersons(sPerson* person1, sPerson* person2)
+{
+    int returnValue = ERROR;
+    sPerson aux1;
+    sPerson aux2;
+
+    aux1 = *person1;
+    aux2 = *person2;
+    *person1 = *person2;
+    *person2 = aux1;
+
+    if(!structs_personsCompare(*person1, aux2) && !structs_personsCompare(*person2, aux1))
+    {
+        returnValue = OK;
     }
 
     return returnValue;

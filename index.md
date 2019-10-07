@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="utn fra logo" src=".vscode/img/logo-utnfra.png" width="150px" />
+  <img alt="utn fra logo" src="https://github.com/utnfrastudents/base-practica-c/raw/master/.vscode/img/logo-utnfra.png" width="150px" />
   <h1 align="center">UTN FRA Bibliotecas Base ANSI C</h1>
 </p>
 

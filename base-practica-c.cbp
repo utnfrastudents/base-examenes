@@ -23,6 +23,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="arrays.h" />
+		<Unit filename="entities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="entities.h" />
 		<Unit filename="inputs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -30,6 +34,14 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
+		<Unit filename="persons.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="persons.h" />
 		<Unit filename="structs.c">
 			<Option compilerVar="CC" />
 		</Unit>

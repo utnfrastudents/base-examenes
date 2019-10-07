@@ -6,7 +6,8 @@
 
 #define TRUE 1 /**< Valor booleano de verdadero. >*/
 #define FALSE 0 /**< Valor booleano de falso. >*/
-#define DEBUG_MODE TRUE /**< Opcion para hacer uso del hardcoding y pausar para ver errores de compilacion. >*/
+#define ERROR -1 /**< Opcion de retorno de error. >*/
+#define OK 0 /**< Opcion de retorno OK. >*/
 #define DAY_MIN 1 /**< Dia minimo de cada mes. >*/
 #define DAY_28 28 /**< Dia maximo de febrero de anio no bisiesto. >*/
 #define DAY_29 29 /**< Dia maximo de febrero de anio bisiesto. >*/
@@ -16,10 +17,15 @@
 #define MONTH_MAX 12 /**< Mes maximo de cada anio. >*/
 #define YEAR_MIN 1900 /**< Anio minimo definido por el programa. >*/
 #define YEAR_MAX 2500 /**< Anio maximo definido por el programa. >*/
+#define PERSONS_MAX 100 /**< Cantidad maxima en un arreglo de tipo de Personas. >*/
 #define PERSON_NAME_MAX 21 /**< Longitud maxima del nombre de una Persona. >*/
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
+#define ENTITIES_MAX 20 /**< Cantidad maxima en un arreglo de tipo Entidad. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
+#define ASC 1 /**< Metodo para ordenar de forma Ascendente. >*/
+#define DESC 0 /**< Metodo para ordenar de forma Descendente. >*/
+#define HARDCODE TRUE /**< Indicador de harcoding para propositos de testeo. >*/
 
 /*! \struct sDate
  * \brief Tipo de Dato generico para almacenar una Fecha.
@@ -47,6 +53,7 @@ typedef struct
 {
     int idEntity; /**< Campo ID de una Entidad. >*/
     char description[ENTITY_NAME_MAX]; /**< Descripcion de la Entidad. >*/
+    int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sEntity;
 
 /*! \struct sPerson
@@ -57,6 +64,7 @@ typedef struct
  * \field lastName[] char Apellido de la Persona.
  * \field date sDate Fecha de la Persona.
  * \field idEntity int Clave foranea del ID de una Entidad.
+ * \field isEmpty int Indicador de registro lleno o vacio.
  * 
  */
 typedef struct
@@ -64,8 +72,8 @@ typedef struct
     int idPerson; /**< Campo ID de una Persona. >*/
     char name[PERSON_NAME_MAX]; /**< Nombre de la Persona. >*/
     char lastName[PERSON_LASTNAME_MAX]; /**< Apellido de la Persona. >*/
-    sDate date; /**< Fecha de la Persona. >*/
     int idEntity; /**< Clave foranea del ID de una Entidad. >*/
+    int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sPerson;
 
 /*! \struct sObject
@@ -95,6 +103,7 @@ typedef struct
     int idPersonObject; /**< Campo ID de estructura de relacion de Personas y Objetos. >*/
     int idPerson; /**< Clave foranea de ID de Persona. >*/
     int idObject; /**< Clave foranea de ID de Objeto. >*/
+    sDate date; /**< Fecha de la relacion. >*/
 } sPersonsObjects;
 
 /** \brief Funcion que evalua si la fecha ingresada es válida
@@ -128,5 +137,31 @@ int structs_dateCompare(sDate date1, sDate date2);
  * 
  */
 int structs_swapDate(sDate* date1, sDate* date2);
+
+/** \brief Funcion que compara dos estructuras de tipo Persona
+ *      por sus ID que son unicos.
+ * 
+ * \param person1 sPerson Tipo de Dato de Persona.
+ * \param person2 sPerson Tipo de Dato de Persona.
+ * \return int
+ *      [0] Se retorna cuando al menos sus ID son iguales.
+ *      [1] Se retorna cuando la Persona 1 tiene ID mayor.
+ *      [-1] Se retorna cuando la Persona 2 tiene ID mayor.
+ *      [-2] Se retorna cuando hubo un error.
+ * 
+ */
+int structs_personsCompare(sPerson person1, sPerson person2);
+
+/** \brief Funcion que intercambia dos estructuras de tipo Persona
+ *      por sus ID que son unicos.
+ * 
+ * \param person1 sPerson* Tipo de Dato de Persona.
+ * \param person2 sPerson* Tipo de Dato de Persona.
+ * \return int
+ *      [0] Si el intercambio fue realizado y verificado con exito.
+ *      [-1] Si hubo un error al hacer el intercambio.
+ * 
+ */
+int structs_swapPersons(sPerson* person1, sPerson* person2);
 
 #endif // STRUCTS_H_INCLUDED
