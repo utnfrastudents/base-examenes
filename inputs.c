@@ -35,13 +35,13 @@ void inputs_pauseScreen(char message[])
 
 void beforeMain() 
 { 
-    inputs_pauseScreen(START_MESSAGE); 
+    inputs_pauseScreen(START_MESSAGE);
 }
 
 void afterMain() 
 { 
     inputs_clearScreen();
-    inputs_pauseScreen(EXIT_MESSAGE); 
+    inputs_pauseScreen(EXIT_MESSAGE);
 }
 
 int inputs_isNumber(char stringValue[])
