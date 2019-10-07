@@ -86,19 +86,27 @@ int persons_selection(char message[], char eMessage[], sPerson personsList[], in
     int auxIndex = 0;
 
     if(message != NULL && eMessage != NULL && personsList != NULL && entitiesList != NULL
-        && personsLength > 0 && personsLength <= PERSONS_MAX && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX
-        && persons_printList(personsList, personsLength, entitiesList, entitiesLength) > 0
-        && !inputs_getInt(&auxId, message, eMessage, ID_INIT_PERSON + 1, ID_INIT_PERSON + PERSONS_MAX))
+        && personsLength > 0 && personsLength <= PERSONS_MAX && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX)
     {
-        auxIndex = persons_getById(personsList, personsLength, auxId);
-
-        if(auxIndex != ERROR)
+        if (persons_printList(personsList, personsLength, entitiesList, entitiesLength) <= 0)
         {
-            returnValue = auxId;
+            printf("No hay Personas activas en el listado.\n");
         }
         else
         {
-            printf("No se encuentra el ID de la Persona en el sistema.\n");
+            if(!inputs_getInt(&auxId, message, eMessage, ID_INIT_PERSON + 1, ID_INIT_PERSON + PERSONS_MAX))
+            {
+                auxIndex = persons_getById(personsList, personsLength, auxId);
+
+                if(auxIndex != ERROR)
+                {
+                    returnValue = auxId;
+                }
+                else
+                {
+                    printf("No se encuentra el ID de la Persona en el sistema.\n");
+                }
+            }
         }
     }
 
@@ -202,6 +210,40 @@ int persons_modify(sPerson personsList[], int personsLength, sEntity entitiesLis
 
             inputs_pauseScreen(CONTINUE_MESSAGE);
             } while (!lifeCycle);
+        }
+    }
+
+    return returnValue;
+}
+
+int persons_remove(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength)
+{
+    int returnValue = ERROR;
+    int id;
+    int index;
+
+    if(personsList != NULL && personsLength > 0 && personsLength <= PERSONS_MAX
+        && entitiesList != NULL && entitiesLength > 0 && entitiesLength <= ENTITIES_MAX)
+    {
+        id = persons_selection("Ingrese el ID de la Persona a dar de baja: ",
+            ERROR_MESSAGE, personsList, personsLength, entitiesList, entitiesLength);
+
+        if(id != ERROR)
+        {
+            index = persons_getById(personsList, personsLength, id);
+
+            if(index != ERROR)
+            {
+                inputs_clearScreen();
+                printf("ATENCION! ESTA A PUNTO DE DAR DE BAJA A LA SIGUIENTE PERSONA:\n");
+
+                if(!persons_print(personsList[index], entitiesList, entitiesLength)
+                    && inputs_userResponse("ESTA DE ACUERDO? [S] [N]: "))
+                {
+                    personsList[index].isEmpty = TRUE;
+                    returnValue = OK;
+                }
+            }
         }
     }
 

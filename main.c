@@ -51,16 +51,21 @@ int main()
                     inputs_clearScreen();
                     if(!persons_modify(persons, PERSONS_MAX, entities, ENTITIES_MAX))
                     {
-                        printf("Modicacion realizada con exito.\n");
+                        printf("Modificacion realizada con exito.\n");
                     }
                     break;
                 case 3:
+                    inputs_clearScreen();
+                    if(!persons_remove(persons, PERSONS_MAX, entities, ENTITIES_MAX))
+                    {
+                        printf("Persona dada de baja con exito.\n");
+                    }
                     break;
                 case 4:
                     inputs_clearScreen();
                     if(persons_printList(persons, PERSONS_MAX, entities, ENTITIES_MAX) == 0)
                     {
-                        printf("No hay Personas en el listado.\n");
+                        printf("No hay Personas activas en el listado.\n");
                     }
                     break;
             }

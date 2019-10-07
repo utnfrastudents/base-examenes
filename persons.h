@@ -92,6 +92,19 @@ int persons_addNew(sPerson personsList[], int personsLength, sEntity entitiesLis
  */
 int persons_modify(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
 
+/** \brief Funcion da de baja a una Persona segun la decision del usuario.
+ * 
+ * \param personsList[] sPerson Direccion de memoria del inicio del arreglo de tipo Persona.
+ * \param personsLength int Longitud del arreglo de tipo Persona.
+ * \param entitiesList[] sPerson Direccion de memoria del inicio del arreglo de tipo Entidad.
+ * \param entitiesLength int Longitud del arreglo de tipo Entidad.
+ * \return int
+ *      [-1] Si hubo un error en la baja de la Persona de la lista.
+ *      [0] Si la baja de la Persona de la lista fue exitosa.
+ *
+ */
+int persons_remove(sPerson personsList[], int personsLength, sEntity entitiesList[], int entitiesLength);
+
 /** \brief Imprime en pantalla un tipo de dato basado en Persona.
  * 
  * \param person sPerson Tipo de Dato basado en Persona.
