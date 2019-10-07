@@ -265,6 +265,8 @@ char* structs_getObjectType(sObject object)
     {
         switch (object.type)
         {
+            case null:
+                break;
             case Tipo1:
                 strcpy(pObjectString, "Tipo 1");
                 break;

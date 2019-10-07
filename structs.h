@@ -23,6 +23,7 @@
 #define PERSON_LASTNAME_MAX 21 /**< Longitud maxima del apellido de una Persona. >*/
 #define ENTITIES_MAX 20 /**< Cantidad maxima en un arreglo de tipo Entidad. >*/
 #define ENTITY_NAME_MAX 21 /**< Longitud maxima de la descripcion de una Entidad. >*/
+#define OBJECTS_MAX 21 /**< Cantidad maxima en un arreglo de tipo de Objetos. >*/
 #define OBJECT_NAME_MAX 21 /**< Longitud maxima de la descripcion de un Objeto. >*/
 #define OBJECT_TYPE_MAX 21 /**< Longitud maxima de la descripcion de un tipo de Objeto. >*/
 #define ASC 1 /**< Metodo para ordenar de forma Ascendente. >*/
@@ -83,6 +84,7 @@ typedef struct
  */
 typedef enum
 {
+    null,
     Tipo1,
     Tipo2,
     Tipo3
@@ -98,8 +100,8 @@ typedef enum
 typedef struct
 {
     int idObject; /**< Campo ID de un Objeto.. >*/
-    char description[OBJECT_NAME_MAX]; /**< Descripcion del Objeto.. >*/
-    int idPerson;  /**< Campo ID de una Persona. >*/
+    int idPerson;  /**< Clave foranea ID de una Persona. >*/
+    char description[OBJECT_NAME_MAX]; /**< Descripcion del Objeto. >*/
     eObjectsType type; /**< Tipo del Objeto. >*/
     int isEmpty; /**< Indicador de registro lleno o vacio. >*/
 } sObject;
